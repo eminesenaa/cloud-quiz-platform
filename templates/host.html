@@ -4,11 +4,22 @@
 
         <!-- Waiting -->
         <div class="hv on" id="hv-w">
-            <div class="pinbox">
-                <div class="pinlbl">Game PIN</div>
-                <div class="pinnum" id="hpin-disp">------</div>
-                <div class="pinhint">Players open this page and enter the PIN to join</div>
+
+            <div class="join-panel">
+                <!-- PIN box -->
+                <div class="pinbox">
+                    <div class="pinlbl">Game PIN</div>
+                    <div class="pinnum" id="hpin-disp">------</div>
+                </div>
+
+                <!-- QR Code -->
+                <div class="qr-wrap">
+                    <div class="qr-label">or scan to join</div>
+                    <div id="qr-code"></div>
+                    <div class="qr-hint"></div>
+                </div>
             </div>
+
             <div style="font-size:18px;font-weight:800;text-align:center" id="hqname"></div>
             <div class="pbox">
                 <h3 id="hplbl">Players (0)</h3>

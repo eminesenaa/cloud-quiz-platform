@@ -4,6 +4,33 @@
 
 let hunsub = null;
 
+// ── QR Code ──
+function generateQR(pin) {
+    const el = document.getElementById('qr-code');
+    if (!el) return;
+    el.innerHTML = '';  // clear previous
+
+    // Build join URL — works both on Firebase Hosting and locally
+    const base = window.location.origin + window.location.pathname.replace('index.html', '');
+    const url = `${base}?join=${pin}`;
+
+    // Show the site URL hint
+    const siteEl = document.getElementById('site-url');
+    if (siteEl) siteEl.textContent = window.location.hostname;
+
+    if (typeof QRCode !== 'undefined') {
+        new QRCode(el, {
+            text: url,
+            width: 160,
+            height: 160,
+            colorDark: '#000000',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.M
+        });
+    }
+}
+window.generateQR = generateQR;
+
 function showHV(id) {
     document.querySelectorAll('.hv').forEach(v => v.classList.remove('on'));
     document.getElementById(id).classList.add('on');

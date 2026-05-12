@@ -137,6 +137,27 @@ function renderPR(d) {
   document.getElementById('prrk').textContent = `Rank #${rank} • Total: ${myScore} pts`;
 }
 
+// ── Auto-fill PIN from URL (?join=ABC123) ──
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const pinFromUrl = params.get('join');
+  if (pinFromUrl) {
+    // Wait for templates to load, then fill & switch to play page
+    const tryFill = setInterval(() => {
+      const pinEl = document.getElementById('ppin');
+      const pageEl = document.getElementById('page-play');
+      if (pinEl && pageEl) {
+        clearInterval(tryFill);
+        pinEl.value = pinFromUrl.toUpperCase();
+        showPage('page-play');
+        showPV('pv-j');
+        document.getElementById('pnick')?.focus();
+      }
+    }, 100);
+  }
+})();
+
+
 function renderPF(d) {
   clearInterval(tInt);
   clearInterval(window._poll);

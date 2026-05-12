@@ -137,6 +137,7 @@ async function startGame() {
     document.getElementById('hplbl').textContent = 'Players (0)';
     showHV('hv-w');
     showPage('page-host');
+    generateQR(pin);
     if (fbOK) startHL();
     toast('✅ Game ready! PIN: ' + pin);
 }
