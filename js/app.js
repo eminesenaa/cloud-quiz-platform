@@ -8,11 +8,11 @@
 // ─────────────────────────────────────────────
 const FBC = {
     apiKey: "AIzaSyDgvV-KfLFXDDtRoU9xcP_hkJIzulHaW2M",
-    authDomain: "cloud-quiz-platform-2f646.firebaseapp.com",
-    projectId: "cloud-quiz-platform-2f646",
-    storageBucket: "cloud-quiz-platform-2f646.firebasestorage.app",
-    messagingSenderId: "521731075438",
-    appId: "1:521731075438:web:1a6882e0c4b8707cd9457f"
+    authDomain: "quizpin433.firebaseapp.com",
+    projectId: "quizpin433",
+    storageBucket: "quizpin433.firebasestorage.app",
+    messagingSenderId: "515415605824",
+    appId: "1:515415605824:web:53b3387771a100ba8955a5"
 };
 // ─────────────────────────────────────────────
 
