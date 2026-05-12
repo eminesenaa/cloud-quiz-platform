@@ -7,9 +7,12 @@
 
             <div class="join-panel">
                 <!-- PIN box -->
-                <div class="pinbox">
+                <div class="pinbox" style="position: relative;">
                     <div class="pinlbl">Game PIN</div>
-                    <div class="pinnum" id="hpin-disp">------</div>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <div class="pinnum" id="hpin-disp">------</div>
+                        <button class="icon-btn" onclick="copyPin()" title="Copy PIN" style="font-size: 1.5rem; color: var(--fg); padding: 4px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);">📋</button>
+                    </div>
                 </div>
 
                 <!-- QR Code -->

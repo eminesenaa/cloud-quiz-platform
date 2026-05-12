@@ -31,6 +31,19 @@ function generateQR(pin) {
 }
 window.generateQR = generateQR;
 
+function copyPin() {
+    const pin = document.getElementById('hpin-disp').textContent;
+    if (pin && pin !== '------') {
+        navigator.clipboard.writeText(pin).then(() => {
+            toast('✅ PIN kopyalandı!');
+        }).catch(err => {
+            toast('❌ PIN kopyalanamadı');
+            console.error(err);
+        });
+    }
+}
+window.copyPin = copyPin;
+
 function showHV(id) {
     document.querySelectorAll('.hv').forEach(v => v.classList.remove('on'));
     document.getElementById(id).classList.add('on');
@@ -55,6 +68,14 @@ function syncHostUI(d) {
         const cnt = Object.values(d.answers || {}).filter(a => a.qIdx === d.currentQ).length;
         const el = document.getElementById('hacnt');
         if (el) el.textContent = cnt + ' answered';
+        
+        if (ps.length > 0 && cnt >= ps.length) {
+            if (window.tInt) {
+                clearInterval(window.tInt);
+                window.tInt = null;
+                revealH(d.currentQ);
+            }
+        }
     }
 }
 
@@ -96,17 +117,28 @@ async function showHQ(idx) {
 }
 
 function startHT(sec, onEnd) {
-    clearInterval(tInt);
+    if (window.tInt) clearInterval(window.tInt);
     let rem = sec;
     const ne = document.getElementById('htnum');
     const fe = document.getElementById('htfill');
     const up = () => { ne.textContent = rem; fe.style.width = (rem / sec * 100) + '%'; };
     up();
-    window.tInt = setInterval(() => { rem--; up(); if (rem <= 0) { clearInterval(tInt); onEnd(); } }, 1000);
+    window.tInt = setInterval(() => { 
+        rem--; 
+        up(); 
+        if (rem <= 0) { 
+            clearInterval(window.tInt); 
+            window.tInt = null;
+            onEnd(); 
+        } 
+    }, 1000);
 }
 
 async function revealH(idx) {
-    clearInterval(tInt);
+    if (window.tInt) {
+        clearInterval(window.tInt);
+        window.tInt = null;
+    }
     const q = quiz.questions[idx];
     let d;
     if (fbOK) d = (await db.collection('sessions').doc(session.id).get()).data();
