@@ -1290,3 +1290,33 @@ select option {
 .lib-card p { opacity: 0.7; font-size: 0.9rem; margin: 0; }
 .lib-card .btn { margin-top: auto; }
 .empty-state { text-align: center; opacity: 0.6; padding: 40px; font-size: 1.1rem; }
+
+/* Library Edit Actions */
+.lc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+.lc-head h3 {
+  margin: 0;
+  word-break: break-word;
+}
+.lc-acts {
+  display: flex;
+  gap: 4px;
+}
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.6;
+  font-size: 1rem;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.icon-btn:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}

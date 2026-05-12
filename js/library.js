@@ -26,8 +26,14 @@ async function goLibrary() {
                 const q = doc.data();
                 const qJson = encodeURIComponent(JSON.stringify(q));
                 return `
-                <div class="lib-card">
-                    <h3>${q.title || 'Untitled Quiz'}</h3>
+                <div class="lib-card" id="quiz-${doc.id}">
+                    <div class="lc-head">
+                        <h3>${q.title || 'Untitled Quiz'}</h3>
+                        <div class="lc-acts">
+                            <button class="icon-btn" onclick="renameQuiz('${doc.id}', '${(q.title || '').replace(/'/g, "\\'")}')" title="Rename">✏️</button>
+                            <button class="icon-btn" onclick="deleteQuiz('${doc.id}')" title="Delete">🗑️</button>
+                        </div>
+                    </div>
                     <p>${q.questions.length} questions</p>
                     <button class="btn bp bsm" onclick="launchFromLib('${qJson}')">🚀 Launch</button>
                 </div>
@@ -50,6 +56,38 @@ window.launchFromLib = function(qJsonEncoded) {
         toast('❌ Error parsing quiz data');
         console.error(e);
     }
+}
+
+window.deleteQuiz = async function(id) {
+    if (!confirm("Are you sure you want to delete this quiz?")) return;
+    ld(true);
+    try {
+        await db.collection('quizzes').doc(id).delete();
+        toast('✅ Quiz deleted!');
+        goLibrary(); // Refresh the list
+    } catch (e) {
+        toast('❌ Failed to delete: ' + e.message);
+        console.error(e);
+    }
+    ld(false);
+}
+
+window.renameQuiz = async function(id, currentTitle) {
+    const newTitle = prompt("Enter new name for the quiz:", currentTitle);
+    if (newTitle === null || newTitle.trim() === "" || newTitle === currentTitle) return;
+    
+    ld(true);
+    try {
+        await db.collection('quizzes').doc(id).update({
+            title: newTitle.trim()
+        });
+        toast('✅ Quiz renamed!');
+        goLibrary(); // Refresh the list
+    } catch (e) {
+        toast('❌ Failed to rename: ' + e.message);
+        console.error(e);
+    }
+    ld(false);
 }
 
 window.goLibrary = goLibrary;
