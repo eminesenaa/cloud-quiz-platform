@@ -6,6 +6,13 @@ function goCreate() {
     window.quiz = { title: '', questions: [] };
     document.getElementById('qtitle').value = '';
     document.getElementById('qcont').innerHTML = '';
+    
+    const bsave = document.getElementById('bsave');
+    if (bsave) {
+        bsave.disabled = false;
+        bsave.textContent = '💾 Save';
+    }
+    
     addQ();
     showPage('page-create');
     updateNav();
@@ -95,6 +102,11 @@ async function saveQuiz() {
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
         toast('✅ Quiz saved!');
+        const bsave = document.getElementById('bsave');
+        if (bsave) {
+            bsave.disabled = true;
+            bsave.textContent = '✅ Saved';
+        }
     } catch (e) { toast('❌ ' + e.message); }
     ld(false);
 }
@@ -102,9 +114,19 @@ async function saveQuiz() {
 async function startGame() {
     const q = collectQuiz();
     if (!q) return;
+    await launchQuiz(q);
+}
+
+async function launchQuiz(q) {
     window.quiz = q;
     window.qIdx = -1;
     const pin = genPin();
+    
+    const hsaveBtn = document.getElementById('hsave-btn');
+    if (hsaveBtn) {
+        hsaveBtn.disabled = false;
+        hsaveBtn.innerHTML = '💾 Save Quiz';
+    }
 
     if (fbOK) {
         ld(true);
@@ -147,4 +169,5 @@ window.addQ = addQ;
 window.delQ = delQ;
 window.saveQuiz = saveQuiz;
 window.startGame = startGame;
+window.launchQuiz = launchQuiz;
 window.collectQuiz = collectQuiz;

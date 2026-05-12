@@ -76,6 +76,7 @@ function updateNav() {
     const hsaveBtn = document.getElementById('hsave-btn');
     if (curUser) {
         el.innerHTML = `
+      <span class="upill" style="cursor:pointer" onclick="goLibrary()">📚 Library</span>
       <span class="upill">👤 ${curUser.displayName || curUser.email.split('@')[0]}</span>
       <button class="btn bo bsm" onclick="doLogout()">Sign Out</button>`;
         const b = document.getElementById('bsave');

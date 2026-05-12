@@ -68,9 +68,10 @@
   <script src="js/create.js"></script>
   <script src="js/host.js"></script>
   <script src="js/play.js"></script>
+  <script src="js/library.js"></script>
 
   <script>
-    const templates = ['home', 'create', 'host', 'play'];
+    const templates = ['home', 'create', 'host', 'play', 'library'];
 
     Promise.all(
       templates.map(t =>
@@ -80,7 +81,6 @@
       )
     ).then(htmls => {
       document.getElementById('app-root').innerHTML = htmls.join('\n');
-      if (typeof addQ === 'function') addQ();
     });
   </script>
 
