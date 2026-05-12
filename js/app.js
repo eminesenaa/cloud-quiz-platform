@@ -7,12 +7,12 @@
 //  Leave empty to run in Demo Mode (localStorage)
 // ─────────────────────────────────────────────
 const FBC = {
-    apiKey: "",
-    authDomain: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: ""
+    apiKey: "AIzaSyDgvV-KfLFXDDtRoU9xcP_hkJIzulHaW2M",
+    authDomain: "cloud-quiz-platform-2f646.firebaseapp.com",
+    projectId: "cloud-quiz-platform-2f646",
+    storageBucket: "cloud-quiz-platform-2f646.firebasestorage.app",
+    messagingSenderId: "521731075438",
+    appId: "1:521731075438:web:1a6882e0c4b8707cd9457f"
 };
 // ─────────────────────────────────────────────
 
