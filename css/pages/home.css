@@ -1,0 +1,191 @@
+/* ═══════════════════════════════════════════════════════
+   QuizPin — Home Page
+   File: css/pages/home.css
+   ═══════════════════════════════════════════════════════
+
+   PURPOSE
+   -------
+   Contains all styles related to the home page.
+
+   This file handles:
+   - Hero section
+   - Main landing content
+   - Home title/subtitle
+   - Join game section
+   - PIN input layout
+   - Responsive hero structure
+
+   IMPORTANT
+   ---------
+   - ONLY home-page-specific styles belong here.
+   - Reusable card/button styles should stay in components.
+   - Avoid shared/global styles.
+
+   RESPONSIVE
+   ----------
+   Fully responsive-safe.
+   Supports desktop/tablet/mobile layouts.
+   ═══════════════════════════════════════════════════════ */
+
+
+/* ======================================================
+   HOME HERO SECTION
+   ====================================================== */
+
+#page-home .hero {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 40px;
+
+    padding: 48px 20px;
+
+    text-align: center;
+}
+
+
+/* ======================================================
+   HERO TITLE
+   ====================================================== */
+
+.htitle {
+    font-size: clamp(36px, 7vw, 64px);
+
+    font-weight: 900;
+
+    line-height: 1.05;
+    letter-spacing: -2px;
+}
+
+
+/* ======================================================
+   HERO HIGHLIGHT
+   ====================================================== */
+
+.htitle em {
+    color: var(--al);
+
+    font-style: normal;
+}
+
+
+/* ======================================================
+   HERO SUBTITLE
+   ====================================================== */
+
+.hsub {
+    max-width: 480px;
+
+    font-size: 17px;
+    line-height: 1.7;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   HOME CARD CONTAINER
+   ====================================================== */
+
+.hcards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 16px;
+}
+
+
+/* ======================================================
+   JOIN GAME BOX
+   ====================================================== */
+
+.jbox {
+    width: 100%;
+    max-width: 440px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 28px 32px;
+
+    background: var(--surf);
+
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+}
+
+
+/* ======================================================
+   JOIN GAME TITLE
+   ====================================================== */
+
+.jbox h3 {
+    font-size: 15px;
+    font-weight: 700;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   JOIN INPUT ROW
+   ====================================================== */
+
+.jrow {
+    width: 100%;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+/* ======================================================
+   LARGE PIN INPUT
+   ====================================================== */
+
+.pinbig {
+    flex: 1;
+
+    padding: 14px !important;
+
+    font-size: 26px !important;
+    font-weight: 900 !important;
+
+    text-align: center !important;
+
+    letter-spacing: 8px !important;
+}
+
+
+/* ======================================================
+   MOBILE RESPONSIVE
+   ====================================================== */
+
+@media (max-width: 640px) {
+
+    .htitle {
+        letter-spacing: -1px;
+    }
+
+    .jbox {
+        padding: 24px 20px;
+    }
+
+    .jrow {
+        flex-direction: column;
+    }
+
+    .pinbig {
+        letter-spacing: 5px !important;
+        font-size: 22px !important;
+    }
+}

@@ -1,0 +1,394 @@
+/* ═══════════════════════════════════════════════════════
+   QuizPin — Create Page
+   File: css/pages/create.css
+   ═══════════════════════════════════════════════════════
+
+   PURPOSE
+   -------
+   Contains all styles related to the quiz
+   creation experience.
+
+   This file handles:
+   - Create page layout
+   - Quiz metadata section
+   - Question cards
+   - Answer option grid
+   - Delete actions
+   - Add question button
+   - Action bar/footer
+
+   IMPORTANT
+   ---------
+   - ONLY create-page-specific styles belong here.
+   - Shared form/button/card styles remain in components.
+   - Designed for scalable quiz editing.
+
+   RESPONSIVE
+   ----------
+   Fully responsive-safe.
+   Includes mobile stacking behavior.
+   ═══════════════════════════════════════════════════════ */
+
+
+/* ======================================================
+   CREATE PAGE WRAPPER
+   ====================================================== */
+
+#page-create .wrap {
+    flex: 1;
+
+    width: 100%;
+    max-width: 780px;
+
+    margin: 0 auto;
+
+    padding: 36px 20px;
+}
+
+
+/* ======================================================
+   PAGE HEADER
+   ====================================================== */
+
+.ph {
+    margin-bottom: 28px;
+}
+
+.ph h2 {
+    margin-bottom: 4px;
+
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.ph p {
+    font-size: 14px;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   QUIZ META SECTION
+   ====================================================== */
+
+.qmeta {
+    margin-bottom: 24px;
+
+    padding: 20px;
+
+    background: var(--surf);
+
+    border: 1.5px solid var(--border);
+    border-radius: var(--r);
+}
+
+
+/* ======================================================
+   QUESTION CARD
+   ====================================================== */
+
+.qcard {
+    margin-bottom: 14px;
+
+    padding: 20px;
+
+    background: var(--surf);
+
+    border: 1.5px solid var(--border);
+    border-radius: var(--r);
+
+    transition: border-color .2s;
+}
+
+.qcard:focus-within {
+    border-color: var(--accent);
+}
+
+
+/* ======================================================
+   QUESTION HEADER
+   ====================================================== */
+
+.qhdr {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 14px;
+}
+
+
+/* ======================================================
+   QUESTION NUMBER BADGE
+   ====================================================== */
+
+.qnum {
+    flex-shrink: 0;
+
+    padding: 4px 10px;
+
+    background: var(--accent);
+    color: #fff;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+/* ======================================================
+   QUESTION TITLE INPUT
+   ====================================================== */
+
+.qtinp {
+    flex: 1;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+/* ======================================================
+   DELETE QUESTION BUTTON
+   ====================================================== */
+
+.qdel {
+    margin-left: auto;
+
+    padding: 5px 10px;
+
+    background: none;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    font-family: inherit;
+
+    transition: all .2s;
+}
+
+.qdel:hover {
+    border-color: var(--red);
+    color: var(--red);
+}
+
+
+/* ======================================================
+   OPTIONS GRID
+   ====================================================== */
+
+.ogrid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+    margin-bottom: 10px;
+}
+
+
+/* ======================================================
+   OPTION ROW
+   ====================================================== */
+
+.orow {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+/* ======================================================
+   OPTION COLOR DOT
+   ====================================================== */
+
+.odot {
+    width: 10px;
+    height: 10px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+}
+
+
+/* ======================================================
+   OPTION TEXT INPUT
+   ====================================================== */
+
+.orow input[type=text] {
+    flex: 1;
+
+    padding: 9px 12px;
+
+    font-size: 14px;
+}
+
+
+/* ======================================================
+   CORRECT ANSWER RADIO
+   ====================================================== */
+
+.orow input[type=radio] {
+    width: 17px;
+    height: 17px;
+
+    flex-shrink: 0;
+
+    cursor: pointer;
+
+    accent-color: var(--green);
+}
+
+
+/* ======================================================
+   QUESTION FOOTER
+   ====================================================== */
+
+.qfoot {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 10px;
+}
+
+
+/* ======================================================
+   FOOTER LABELS
+   ====================================================== */
+
+.qfoot label {
+    white-space: nowrap;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: .5px;
+    text-transform: uppercase;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   FOOTER SELECT
+   ====================================================== */
+
+.qfoot select {
+    width: auto;
+    flex: 1;
+
+    padding: 7px 10px;
+
+    font-size: 13px;
+}
+
+
+/* ======================================================
+   HELPER TEXT
+   ====================================================== */
+
+.hint {
+    margin-left: auto;
+
+    font-size: 11px;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   ADD QUESTION BUTTON
+   ====================================================== */
+
+.addq {
+    width: 100%;
+
+    margin-bottom: 24px;
+
+    padding: 16px;
+
+    background: none;
+
+    border: 2px dashed var(--border);
+    border-radius: var(--r);
+
+    cursor: pointer;
+
+    color: var(--muted);
+
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+
+    transition:
+        border-color .2s,
+        color .2s;
+}
+
+.addq:hover {
+    border-color: var(--al);
+    color: var(--al);
+}
+
+
+/* ======================================================
+   ACTION BAR
+   ====================================================== */
+
+.abar {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+/* ======================================================
+   MOBILE RESPONSIVE
+   ====================================================== */
+
+@media (max-width: 640px) {
+
+    .ogrid {
+        grid-template-columns: 1fr;
+    }
+
+    .qhdr {
+        flex-wrap: wrap;
+    }
+
+    .qfoot {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hint {
+        margin-left: 0;
+    }
+
+    .abar {
+        justify-content: stretch;
+    }
+
+    .abar .btn {
+        width: 100%;
+    }
+}

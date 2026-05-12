@@ -1,0 +1,101 @@
+/* ═══════════════════════════════════════════════════════
+   QuizPin — CSS Variables / Design Tokens
+   File: css/base/variables.css
+   ═══════════════════════════════════════════════════════
+
+   PURPOSE
+   -------
+   Centralized design system variables.
+
+   This file contains:
+   - Theme colors
+   - Surface colors
+   - Accent colors
+   - Text colors
+   - Border colors
+   - Shared radius values
+   - Quiz option colors
+
+   IMPORTANT
+   ---------
+   - All reusable values should live here.
+   - Avoid hardcoded colors in other CSS files.
+   - Makes theme updates extremely easy.
+   - Used globally across all pages/components.
+
+   RESPONSIVE
+   ----------
+   Safe for all screen sizes.
+   No layout-breaking rules here.
+   ═══════════════════════════════════════════════════════ */
+
+
+/* ======================================================
+   ROOT VARIABLES
+   ====================================================== */
+
+:root {
+
+    /* ─────────────────────────────────────────
+       Backgrounds / Surfaces
+       ───────────────────────────────────────── */
+
+    --bg: #07071a;
+    --surf: #0f0f28;
+    --surf2: #171730;
+
+
+    /* ─────────────────────────────────────────
+       Borders
+       ───────────────────────────────────────── */
+
+    --border: #252550;
+
+
+    /* ─────────────────────────────────────────
+       Brand / Accent Colors
+       ───────────────────────────────────────── */
+
+    --accent: #7c3aed;
+    --al: #a855f7;
+    --cyan: #06b6d4;
+
+
+    /* ─────────────────────────────────────────
+       Feedback Colors
+       ───────────────────────────────────────── */
+
+    --green: #10b981;
+    --red: #ef4444;
+    --yellow: #f59e0b;
+
+
+    /* ─────────────────────────────────────────
+       Typography
+       ───────────────────────────────────────── */
+
+    --text: #f0efff;
+    --muted: #6666aa;
+
+
+    /* ─────────────────────────────────────────
+       Shared Radius
+       ───────────────────────────────────────── */
+
+    --r: 14px;
+
+
+    /* ─────────────────────────────────────────
+       Quiz Option Colors
+       Used for:
+       - Answers
+       - Option cards
+       - Player buttons
+       - Reveal screens
+       ───────────────────────────────────────── */
+
+    --ca: #ef4444;
+    --cb: #3b82f6;
+    --cc: #10b981;
+    --cd: #f59e0b;
+}

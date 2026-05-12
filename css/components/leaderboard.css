@@ -1,0 +1,163 @@
+/* ═══════════════════════════════════════════════════════
+   QuizPin — Leaderboard Components
+   File: css/components/leaderboard.css
+   ═══════════════════════════════════════════════════════
+
+   PURPOSE
+   -------
+   Contains reusable leaderboard/ranking UI styles.
+
+   This file handles:
+   - Leaderboard containers
+   - Ranking rows
+   - Medal/icon areas
+   - Player name section
+   - Score display
+   - Result/reveal ranking visuals
+
+   IMPORTANT
+   ---------
+   - Shared ranking systems belong here.
+   - Reusable between host/play/results pages.
+   - Avoid page-specific wrappers/layouts.
+
+   RESPONSIVE
+   ----------
+   Fully responsive-safe.
+   Flexible row sizing included.
+   ═══════════════════════════════════════════════════════ */
+
+
+/* ======================================================
+   LEADERBOARD CONTAINER
+   ====================================================== */
+
+.lb {
+    width: 100%;
+}
+
+
+/* ======================================================
+   LEADERBOARD ROW
+   ====================================================== */
+
+.lbrow {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 8px;
+
+    padding: 12px 16px;
+
+    background: var(--surf);
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    transition:
+        transform .15s,
+        border-color .2s;
+}
+
+.lbrow:hover {
+    transform: translateY(-2px);
+
+    border-color: var(--al);
+}
+
+
+/* ======================================================
+   LEADERBOARD MEDAL / POSITION
+   ====================================================== */
+
+.lbm {
+    width: 32px;
+
+    flex-shrink: 0;
+
+    text-align: center;
+
+    font-size: 20px;
+}
+
+
+/* ======================================================
+   PLAYER NAME
+   ====================================================== */
+
+.lbn {
+    flex: 1;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+/* ======================================================
+   PLAYER SCORE
+   ====================================================== */
+
+.lbp {
+    flex-shrink: 0;
+
+    font-size: 17px;
+    font-weight: 900;
+
+    color: var(--cyan);
+}
+
+
+/* ======================================================
+   RANK TEXT
+   ====================================================== */
+
+.ranktext {
+    margin-top: 8px;
+
+    font-size: 15px;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   FINAL RANK TEXT
+   ====================================================== */
+
+.rfinal {
+    font-size: 16px;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   MOBILE RESPONSIVE
+   ====================================================== */
+
+@media (max-width: 640px) {
+
+    .lbrow {
+        padding: 10px 12px;
+    }
+
+    .lbm {
+        width: 26px;
+
+        font-size: 18px;
+    }
+
+    .lbn {
+        font-size: 14px;
+    }
+
+    .lbp {
+        font-size: 15px;
+    }
+}

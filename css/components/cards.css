@@ -1,0 +1,272 @@
+/* ═══════════════════════════════════════════════════════
+   QuizPin — Cards
+   File: css/components/cards.css
+   ═══════════════════════════════════════════════════════
+
+   PURPOSE
+   -------
+   Contains reusable card-based UI components.
+
+   This file handles:
+   - Global card containers
+   - Home page cards
+   - Library cards
+   - Shared card interactions
+   - Icon action buttons
+
+   IMPORTANT
+   ---------
+   - Only reusable/shared card systems belong here.
+   - Avoid page layout structures.
+   - Keep page-specific wrappers elsewhere.
+
+   RESPONSIVE
+   ----------
+   Fully responsive-safe.
+   Uses flexible grid/flex layouts.
+   ═══════════════════════════════════════════════════════ */
+
+
+/* ======================================================
+   GLOBAL CARD
+   ====================================================== */
+
+.card {
+    background: var(--surf);
+
+    border: 1.5px solid var(--border);
+    border-radius: var(--r);
+
+    padding: 24px;
+}
+
+
+/* ======================================================
+   HOME FEATURE CARDS
+   ====================================================== */
+
+.hcard {
+    position: relative;
+
+    width: 230px;
+
+    background: var(--surf);
+
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+
+    padding: 32px 28px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        border-color .2s,
+        transform .2s;
+}
+
+.hcard:hover {
+    border-color: var(--al);
+    transform: translateY(-6px);
+}
+
+
+/* ======================================================
+   HOME CARD ICON
+   ====================================================== */
+
+.hcard .ico {
+    display: block;
+
+    font-size: 48px;
+
+    margin-bottom: 14px;
+}
+
+
+/* ======================================================
+   HOME CARD TITLE
+   ====================================================== */
+
+.hcard h3 {
+    font-size: 18px;
+    font-weight: 800;
+
+    margin-bottom: 6px;
+}
+
+
+/* ======================================================
+   HOME CARD DESCRIPTION
+   ====================================================== */
+
+.hcard p {
+    font-size: 13px;
+    line-height: 1.5;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   HOME CARD BADGE
+   ====================================================== */
+
+.hcard .badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+
+    background: var(--green);
+    color: #fff;
+
+    padding: 3px 8px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* ======================================================
+   LIBRARY GRID
+   ====================================================== */
+
+.lib-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(250px, 1fr));
+
+    gap: 16px;
+
+    margin: 24px 0;
+}
+
+
+/* ======================================================
+   LIBRARY CARD
+   ====================================================== */
+
+.lib-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 16px;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 12px;
+}
+
+
+/* ======================================================
+   LIBRARY CARD TITLE
+   ====================================================== */
+
+.lib-card h3 {
+    margin: 0;
+
+    font-size: 1.1rem;
+}
+
+
+/* ======================================================
+   LIBRARY CARD DESCRIPTION
+   ====================================================== */
+
+.lib-card p {
+    margin: 0;
+
+    opacity: 0.7;
+
+    font-size: 0.9rem;
+}
+
+
+/* ======================================================
+   LIBRARY CARD BUTTON ALIGNMENT
+   ====================================================== */
+
+.lib-card .btn {
+    margin-top: auto;
+}
+
+
+/* ======================================================
+   EMPTY STATE
+   ====================================================== */
+
+.empty-state {
+    padding: 40px;
+
+    text-align: center;
+
+    opacity: 0.6;
+
+    font-size: 1.1rem;
+}
+
+
+/* ======================================================
+   LIBRARY CARD HEADER
+   ====================================================== */
+
+.lc-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 8px;
+}
+
+.lc-head h3 {
+    margin: 0;
+
+    word-break: break-word;
+}
+
+
+/* ======================================================
+   LIBRARY ACTIONS
+   ====================================================== */
+
+.lc-acts {
+    display: flex;
+    gap: 4px;
+}
+
+
+/* ======================================================
+   ICON BUTTON
+   ====================================================== */
+
+.icon-btn {
+    background: transparent;
+    border: none;
+
+    padding: 4px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    opacity: 0.6;
+
+    font-size: 1rem;
+
+    transition: all 0.2s;
+}
+
+.icon-btn:hover {
+    opacity: 1;
+
+    background:
+        rgba(255, 255, 255, 0.1);
+}

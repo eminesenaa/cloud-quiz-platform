@@ -1,0 +1,495 @@
+/* ═══════════════════════════════════════════════════════
+   QuizPin — Play Page
+   File: css/pages/play.css
+   ═══════════════════════════════════════════════════════
+
+   PURPOSE
+   -------
+   Contains all styles related to the player
+   quiz experience.
+
+   This file handles:
+   - Join screen
+   - Waiting screen
+   - Question gameplay
+   - Player answer grid
+   - Result/reveal screens
+   - Final score screen
+   - Gameplay animations
+
+   IMPORTANT
+   ---------
+   - ONLY player-page-specific styles belong here.
+   - Shared buttons/cards/forms stay in components.
+   - Designed for realtime multiplayer gameplay.
+
+   RESPONSIVE
+   ----------
+   Fully responsive-safe.
+   Mobile-first stacking included.
+   ═══════════════════════════════════════════════════════ */
+
+
+/* ======================================================
+   PLAY PAGE WRAPPER
+   ====================================================== */
+
+#page-play .wrap {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 20px;
+
+    padding: 24px 16px;
+}
+
+
+/* ======================================================
+   PLAYER VIEW CONTAINER
+   ====================================================== */
+
+.pv {
+    width: 100%;
+    max-width: 520px;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 16px;
+}
+
+.pv.on {
+    display: flex;
+}
+
+
+/* ======================================================
+   JOIN CARD
+   ====================================================== */
+
+.jcard {
+    width: 100%;
+}
+
+.jcard h2 {
+    margin-bottom: 4px;
+
+    font-size: 26px;
+    font-weight: 900;
+}
+
+.jcard p {
+    margin-bottom: 24px;
+
+    font-size: 14px;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   LARGE PIN INPUT
+   ====================================================== */
+
+.pinlg {
+    padding: 14px !important;
+
+    text-align: center !important;
+
+    font-size: 26px !important;
+    font-weight: 900 !important;
+
+    letter-spacing: 8px !important;
+}
+
+
+/* ======================================================
+   WAITING SCREEN
+   ====================================================== */
+
+.pwait {
+    width: 100%;
+
+    padding: 40px;
+
+    text-align: center;
+}
+
+
+/* ======================================================
+   WAITING ICON
+   ====================================================== */
+
+.pwait .bi {
+    display: block;
+
+    margin-bottom: 14px;
+
+    font-size: 56px;
+
+    animation: fl 2s ease-in-out infinite;
+}
+
+
+/* ======================================================
+   FLOAT ANIMATION
+   ====================================================== */
+
+@keyframes fl {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* ======================================================
+   WAITING TITLE
+   ====================================================== */
+
+.pwait h2 {
+    margin-bottom: 6px;
+
+    font-size: 22px;
+    font-weight: 800;
+}
+
+
+/* ======================================================
+   WAITING DESCRIPTION
+   ====================================================== */
+
+.pwait p {
+    font-size: 14px;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   PLAYER NAME LABEL
+   ====================================================== */
+
+.pnl {
+    margin-top: 12px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    color: var(--al);
+}
+
+
+/* ======================================================
+   PLAYER TIMER
+   ====================================================== */
+
+.ptimer {
+    font-size: 52px;
+    font-weight: 900;
+
+    color: var(--al);
+}
+
+
+/* ======================================================
+   QUESTION TITLE
+   ====================================================== */
+
+.pqt {
+    max-width: 480px;
+
+    text-align: center;
+
+    font-size: clamp(18px, 4vw, 24px);
+    font-weight: 800;
+
+    line-height: 1.4;
+}
+
+
+/* ======================================================
+   PLAYER OPTION GRID
+   ====================================================== */
+
+.pogrid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+
+/* ======================================================
+   PLAYER OPTION BUTTON
+   ====================================================== */
+
+.popt {
+    min-height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 22px 14px;
+
+    border: none;
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    color: #fff;
+
+    text-align: center;
+
+    font-size: clamp(14px, 3vw, 17px);
+    font-weight: 800;
+    font-family: inherit;
+
+    transition:
+        transform .1s,
+        filter .15s,
+        box-shadow .2s;
+}
+
+
+/* ======================================================
+   OPTION INTERACTIONS
+   ====================================================== */
+
+.popt:hover:not(:disabled) {
+    filter: brightness(1.15);
+    transform: scale(1.03);
+}
+
+.popt:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.popt:disabled {
+    cursor: not-allowed;
+
+    filter: none;
+    transform: none;
+}
+
+
+/* ======================================================
+   SELECTED OPTION
+   ====================================================== */
+
+.popt.sel {
+    box-shadow:
+        0 0 0 4px #fff,
+        0 0 20px rgba(255, 255, 255, .2);
+}
+
+
+/* ======================================================
+   RESULT SCREEN
+   ====================================================== */
+
+.presult {
+    width: 100%;
+
+    padding: 36px;
+
+    text-align: center;
+}
+
+
+/* ======================================================
+   RESULT EMOJI
+   ====================================================== */
+
+.remi {
+    margin-bottom: 8px;
+
+    font-size: 56px;
+}
+
+
+/* ======================================================
+   RESULT LABEL
+   ====================================================== */
+
+.rlbl {
+    margin-bottom: 4px;
+
+    font-size: 24px;
+    font-weight: 800;
+}
+
+
+/* ======================================================
+   POINT DISPLAY
+   ====================================================== */
+
+.ptsbig {
+    font-size: 56px;
+    font-weight: 900;
+
+    animation: pop .4s ease;
+}
+
+.ptsbig.c {
+    color: var(--green);
+}
+
+.ptsbig.w {
+    color: var(--red);
+}
+
+
+/* ======================================================
+   RANK TEXT
+   ====================================================== */
+
+.ranktext {
+    margin-top: 8px;
+
+    font-size: 15px;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   WAITING NEXT LABEL
+   ====================================================== */
+
+.wnext {
+    margin-top: 16px;
+
+    font-size: 13px;
+
+    color: var(--muted);
+
+    animation: pu 1.5s ease-in-out infinite;
+}
+
+
+/* ======================================================
+   PULSE ANIMATION
+   ====================================================== */
+
+@keyframes pu {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .3;
+    }
+}
+
+
+/* ======================================================
+   FINAL SCREEN
+   ====================================================== */
+
+.pfinal {
+    width: 100%;
+
+    padding: 40px;
+
+    text-align: center;
+}
+
+
+/* ======================================================
+   FINAL TROPHY
+   ====================================================== */
+
+.pfinal .tr {
+    margin-bottom: 12px;
+
+    font-size: 72px;
+}
+
+
+/* ======================================================
+   FINAL TITLE
+   ====================================================== */
+
+.pfinal h2 {
+    margin-bottom: 4px;
+
+    font-size: 26px;
+    font-weight: 900;
+}
+
+
+/* ======================================================
+   TOTAL SCORE
+   ====================================================== */
+
+.tscore {
+    margin: 8px 0;
+
+    font-size: 64px;
+    font-weight: 900;
+
+    line-height: 1;
+
+    color: var(--cyan);
+}
+
+
+/* ======================================================
+   FINAL RANK
+   ====================================================== */
+
+.rfinal {
+    font-size: 16px;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   MOBILE RESPONSIVE
+   ====================================================== */
+
+@media (max-width: 640px) {
+
+    .pogrid {
+        grid-template-columns: 1fr;
+    }
+
+    .pwait,
+    .presult,
+    .pfinal {
+        padding: 28px 20px;
+    }
+
+    .ptimer {
+        font-size: 42px;
+    }
+
+    .tscore {
+        font-size: 52px;
+    }
+
+    .pinlg {
+        letter-spacing: 5px !important;
+        font-size: 22px !important;
+    }
+}

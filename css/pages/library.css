@@ -1,0 +1,221 @@
+/* ═══════════════════════════════════════════════════════
+   QuizPin — Library Page
+   File: css/pages/library.css
+   ═══════════════════════════════════════════════════════
+
+   PURPOSE
+   -------
+   Contains all styles related to the quiz
+   library/saved quizzes experience.
+
+   This file handles:
+   - Quiz library grid
+   - Saved quiz cards
+   - Empty state UI
+   - Edit/delete action area
+   - Card interaction helpers
+
+   IMPORTANT
+   ---------
+   - ONLY library-page-specific styles belong here.
+   - Shared card/button styles stay in components.
+   - Designed for scalable quiz management.
+
+   RESPONSIVE
+   ----------
+   Fully responsive-safe.
+   Uses adaptive CSS grid layouts.
+   ═══════════════════════════════════════════════════════ */
+
+
+/* ======================================================
+   LIBRARY PAGE WRAPPER
+   ====================================================== */
+
+#page-library .wrap {
+    flex: 1;
+
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 36px 20px;
+}
+
+
+/* ======================================================
+   LIBRARY GRID
+   ====================================================== */
+
+.lib-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(250px, 1fr));
+
+    gap: 16px;
+
+    margin: 24px 0;
+}
+
+
+/* ======================================================
+   LIBRARY CARD
+   ====================================================== */
+
+.lib-card {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    padding: 16px;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 12px;
+
+    transition:
+        transform .2s,
+        border-color .2s;
+}
+
+.lib-card:hover {
+    transform: translateY(-4px);
+
+    border-color: var(--al);
+}
+
+
+/* ======================================================
+   LIBRARY CARD TITLE
+   ====================================================== */
+
+.lib-card h3 {
+    margin: 0;
+
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+
+/* ======================================================
+   LIBRARY CARD DESCRIPTION
+   ====================================================== */
+
+.lib-card p {
+    margin: 0;
+
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    opacity: 0.7;
+}
+
+
+/* ======================================================
+   CARD BUTTON ALIGNMENT
+   ====================================================== */
+
+.lib-card .btn {
+    margin-top: auto;
+}
+
+
+/* ======================================================
+   EMPTY STATE
+   ====================================================== */
+
+.empty-state {
+    padding: 40px;
+
+    text-align: center;
+
+    font-size: 1.1rem;
+
+    opacity: 0.6;
+}
+
+
+/* ======================================================
+   LIBRARY CARD HEADER
+   ====================================================== */
+
+.lc-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 8px;
+}
+
+
+/* ======================================================
+   HEADER TITLE FIX
+   ====================================================== */
+
+.lc-head h3 {
+    margin: 0;
+
+    word-break: break-word;
+}
+
+
+/* ======================================================
+   ACTION BUTTON GROUP
+   ====================================================== */
+
+.lc-acts {
+    display: flex;
+
+    gap: 4px;
+}
+
+
+/* ======================================================
+   ICON BUTTON
+   ====================================================== */
+
+.icon-btn {
+    padding: 4px;
+
+    background: transparent;
+
+    border: none;
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    opacity: 0.6;
+
+    font-size: 1rem;
+
+    transition: all 0.2s;
+}
+
+.icon-btn:hover {
+    opacity: 1;
+
+    background:
+        rgba(255, 255, 255, 0.1);
+}
+
+
+/* ======================================================
+   MOBILE RESPONSIVE
+   ====================================================== */
+
+@media (max-width: 640px) {
+
+    #page-library .wrap {
+        padding: 28px 16px;
+    }
+
+    .lib-grid {
+        grid-template-columns: 1fr;
+    }
+}

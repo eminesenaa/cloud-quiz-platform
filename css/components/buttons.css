@@ -1,0 +1,160 @@
+/* ═══════════════════════════════════════════════════════
+   QuizPin — Buttons
+   File: css/components/buttons.css
+   ═══════════════════════════════════════════════════════
+
+   PURPOSE
+   -------
+   Contains all reusable button styles.
+
+   This file handles:
+   - Primary buttons
+   - Outline buttons
+   - Cyan buttons
+   - Success/Danger buttons
+   - Button sizing utilities
+   - Hover/active states
+
+   IMPORTANT
+   ---------
+   - Shared globally across all pages.
+   - Keep ONLY button-related styles here.
+   - Avoid page-specific button styling.
+
+   RESPONSIVE
+   ----------
+   Fully responsive-safe.
+   Uses flexible sizing and scalable spacing.
+   ═══════════════════════════════════════════════════════ */
+
+
+/* ======================================================
+   BASE BUTTON
+   ====================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 10px 20px;
+
+    border-radius: 10px;
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+
+    transition:
+        transform .1s,
+        filter .15s;
+}
+
+
+/* ======================================================
+   BUTTON INTERACTIONS
+   ====================================================== */
+
+.btn:hover {
+    filter: brightness(1.13);
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+
+/* ======================================================
+   PRIMARY BUTTON
+   ====================================================== */
+
+.bp {
+    background: var(--accent);
+    color: #fff;
+}
+
+
+/* ======================================================
+   OUTLINE BUTTON
+   ====================================================== */
+
+.bo {
+    background: transparent;
+
+    color: var(--text);
+
+    border: 1.5px solid var(--border);
+}
+
+.bo:hover {
+    border-color: var(--al);
+    color: var(--al);
+}
+
+
+/* ======================================================
+   CYAN BUTTON
+   ====================================================== */
+
+.bc {
+    background: var(--cyan);
+    color: #000;
+}
+
+
+/* ======================================================
+   SUCCESS BUTTON
+   ====================================================== */
+
+.bg {
+    background: var(--green);
+    color: #fff;
+}
+
+
+/* ======================================================
+   DANGER BUTTON
+   ====================================================== */
+
+.br {
+    background: var(--red);
+    color: #fff;
+}
+
+
+/* ======================================================
+   LARGE BUTTON
+   ====================================================== */
+
+.blg {
+    padding: 14px 32px;
+
+    font-size: 16px;
+
+    border-radius: 12px;
+}
+
+
+/* ======================================================
+   SMALL BUTTON
+   ====================================================== */
+
+.bsm {
+    padding: 7px 14px;
+
+    font-size: 13px;
+}
+
+
+/* ======================================================
+   BLOCK BUTTON
+   Full width button
+   ====================================================== */
+
+.bbl {
+    width: 100%;
+}

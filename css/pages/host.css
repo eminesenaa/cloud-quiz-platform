@@ -1,0 +1,699 @@
+/* ═══════════════════════════════════════════════════════
+   QuizPin — Host Page
+   File: css/pages/host.css
+   ═══════════════════════════════════════════════════════
+
+   PURPOSE
+   -------
+   Contains all styles related to the host/admin
+   quiz experience.
+
+   This file handles:
+   - Host lobby
+   - QR join section
+   - PIN display
+   - Player chips
+   - Question presentation
+   - Timer system
+   - Reveal/results UI
+   - Leaderboard
+   - Final results screen
+
+   IMPORTANT
+   ---------
+   - ONLY host-page-specific styles belong here.
+   - Shared button/card/form styles stay in components.
+   - Built for realtime multiplayer quiz flow.
+
+   RESPONSIVE
+   ----------
+   Fully responsive-safe.
+   Includes mobile stacking layouts.
+   ═══════════════════════════════════════════════════════ */
+
+
+/* ======================================================
+   HOST PAGE WRAPPER
+   ====================================================== */
+
+#page-host .wrap {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 24px;
+
+    padding: 32px 20px;
+}
+
+
+/* ======================================================
+   HOST VIEW CONTAINER
+   ====================================================== */
+
+.hv {
+    width: 100%;
+    max-width: 720px;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.hv.on {
+    display: flex;
+}
+
+
+/* ======================================================
+   JOIN PANEL
+   PIN + QR layout
+   ====================================================== */
+
+.join-panel {
+    width: 100%;
+    max-width: 720px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 24px;
+}
+
+
+/* ======================================================
+   QR WRAPPER
+   ====================================================== */
+
+.qr-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 20px 24px;
+
+    background: var(--surf);
+
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+}
+
+
+/* ======================================================
+   QR LABEL
+   ====================================================== */
+
+.qr-label {
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   QR CODE CONTAINER
+   ====================================================== */
+
+#qr-code {
+    line-height: 0;
+
+    padding: 10px;
+
+    background: #fff;
+
+    border-radius: 10px;
+}
+
+#qr-code canvas,
+#qr-code img {
+    display: block;
+
+    border-radius: 6px;
+}
+
+
+/* ======================================================
+   QR HINT TEXT
+   ====================================================== */
+
+.qr-hint {
+    text-align: center;
+
+    font-size: 12px;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   PIN BOX
+   ====================================================== */
+
+.pinbox {
+    padding: 32px 52px;
+
+    text-align: center;
+
+    background: var(--surf);
+
+    border: 2px solid var(--cyan);
+    border-radius: 22px;
+}
+
+
+/* ======================================================
+   PIN LABEL
+   ====================================================== */
+
+.pinlbl {
+    margin-bottom: 8px;
+
+    font-size: 11px;
+
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   PIN NUMBER
+   ====================================================== */
+
+.pinnum {
+    font-size: 72px;
+    font-weight: 900;
+
+    letter-spacing: 12px;
+    line-height: 1;
+
+    color: var(--cyan);
+}
+
+
+/* ======================================================
+   PIN HINT
+   ====================================================== */
+
+.pinhint {
+    margin-top: 8px;
+
+    font-size: 13px;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   PLAYER BOX
+   ====================================================== */
+
+.pbox {
+    width: 100%;
+
+    padding: 20px 24px;
+
+    background: var(--surf);
+
+    border: 1.5px solid var(--border);
+    border-radius: var(--r);
+}
+
+.pbox h3 {
+    margin-bottom: 12px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   PLAYER CHIPS
+   ====================================================== */
+
+.chips {
+    min-height: 40px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+
+/* ======================================================
+   PLAYER CHIP
+   ====================================================== */
+
+.chip {
+    padding: 7px 16px;
+
+    background: var(--surf2);
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    animation: pop .2s ease;
+}
+
+
+/* ======================================================
+   CHIP POP ANIMATION
+   ====================================================== */
+
+@keyframes pop {
+
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ======================================================
+   HOST BUTTON GROUP
+   ====================================================== */
+
+.hbtns {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+
+/* ======================================================
+   QUESTION PROGRESS
+   ====================================================== */
+
+.qprog {
+    font-size: 14px;
+    font-weight: 700;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   QUESTION CARD
+   ====================================================== */
+
+.qc {
+    width: 100%;
+
+    padding: 28px;
+
+    text-align: center;
+
+    background: var(--surf);
+
+    border-radius: 18px;
+}
+
+.qc h2 {
+    margin-bottom: 22px;
+
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 800;
+
+    line-height: 1.4;
+}
+
+
+/* ======================================================
+   HOST OPTION GRID
+   ====================================================== */
+
+.hogrid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+
+/* ======================================================
+   HOST OPTION CARD
+   ====================================================== */
+
+.hopt {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    color: #fff;
+
+    font-size: 16px;
+    font-weight: 800;
+}
+
+
+/* ======================================================
+   OPTION ICON
+   ====================================================== */
+
+.osh {
+    font-size: 20px;
+}
+
+
+/* ======================================================
+   TIMER ROW
+   ====================================================== */
+
+.trow {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+}
+
+
+/* ======================================================
+   TIMER NUMBER
+   ====================================================== */
+
+.tnum {
+    min-width: 52px;
+
+    text-align: center;
+
+    font-size: 36px;
+    font-weight: 900;
+
+    color: var(--al);
+}
+
+
+/* ======================================================
+   TIMER TRACK
+   ====================================================== */
+
+.ttrack {
+    flex: 1;
+
+    height: 8px;
+
+    overflow: hidden;
+
+    background: var(--border);
+
+    border-radius: 4px;
+}
+
+
+/* ======================================================
+   TIMER FILL
+   ====================================================== */
+
+.tfill {
+    height: 100%;
+
+    background: var(--al);
+
+    border-radius: 4px;
+
+    transition: width 1s linear;
+}
+
+
+/* ======================================================
+   ANSWER COUNT
+   ====================================================== */
+
+.acnt {
+    min-width: 80px;
+
+    text-align: right;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   REVEAL GRID
+   ====================================================== */
+
+.rvgrid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+
+/* ======================================================
+   REVEAL OPTION
+   ====================================================== */
+
+.rvopt {
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    opacity: .35;
+
+    transition: opacity .4s;
+}
+
+.rvopt.ok {
+    opacity: 1;
+
+    box-shadow: 0 0 0 3px var(--green);
+}
+
+
+/* ======================================================
+   REVEAL BAR
+   ====================================================== */
+
+.rvbar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    height: 5px;
+
+    background: rgba(255, 255, 255, .35);
+
+    transition: width .6s ease;
+}
+
+
+/* ======================================================
+   REVEAL COUNT BADGE
+   ====================================================== */
+
+.rvcnt {
+    margin-left: auto;
+
+    padding: 3px 8px;
+
+    background: rgba(0, 0, 0, .2);
+
+    border-radius: 10px;
+
+    font-size: 13px;
+}
+
+
+/* ======================================================
+   LEADERBOARD
+   ====================================================== */
+
+.lb {
+    width: 100%;
+}
+
+
+/* ======================================================
+   LEADERBOARD ROW
+   ====================================================== */
+
+.lbrow {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 8px;
+
+    padding: 12px 16px;
+
+    background: var(--surf);
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+
+/* ======================================================
+   LEADERBOARD MEDAL
+   ====================================================== */
+
+.lbm {
+    width: 32px;
+
+    text-align: center;
+
+    font-size: 20px;
+}
+
+
+/* ======================================================
+   LEADERBOARD NAME
+   ====================================================== */
+
+.lbn {
+    flex: 1;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+/* ======================================================
+   LEADERBOARD POINTS
+   ====================================================== */
+
+.lbp {
+    font-size: 17px;
+    font-weight: 900;
+
+    color: var(--cyan);
+}
+
+
+/* ======================================================
+   FINAL RESULT CARD
+   ====================================================== */
+
+.fcrd {
+    width: 100%;
+
+    padding: 36px;
+
+    text-align: center;
+
+    background: var(--surf);
+
+    border-radius: 20px;
+}
+
+.fcrd .tr {
+    margin-bottom: 12px;
+
+    font-size: 64px;
+}
+
+.fcrd h2 {
+    margin-bottom: 6px;
+
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.fcrd .fs {
+    margin-bottom: 24px;
+
+    font-size: 14px;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   MOBILE RESPONSIVE
+   ====================================================== */
+
+@media (max-width: 640px) {
+
+    .join-panel {
+        flex-direction: column;
+    }
+
+    .pinbox {
+        width: 100%;
+
+        padding: 28px 20px;
+    }
+
+    .pinnum {
+        font-size: 48px;
+        letter-spacing: 6px;
+    }
+
+    .hogrid,
+    .rvgrid {
+        grid-template-columns: 1fr;
+    }
+
+    .trow {
+        flex-wrap: wrap;
+    }
+
+    .acnt {
+        width: 100%;
+        text-align: left;
+    }
+
+    .qc {
+        padding: 22px 18px;
+    }
+
+    .fcrd {
+        padding: 28px 20px;
+    }
+}

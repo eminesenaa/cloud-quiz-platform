@@ -1,0 +1,39 @@
+/* ═══════════════════════════════════════════════════════
+   QuizPin — CSS Reset
+   File: css/base/reset.css
+   ═══════════════════════════════════════════════════════
+
+   PURPOSE
+   -------
+   Resets browser default styles and ensures
+   consistent layout behavior across browsers.
+
+   This file handles:
+   - margin reset
+   - padding reset
+   - box sizing normalization
+
+   IMPORTANT
+   ---------
+   - Must load BEFORE all other CSS files.
+   - Prevents unexpected spacing/layout issues.
+   - Keeps responsive layouts predictable.
+
+   RESPONSIVE
+   ----------
+   Fully safe for all screen sizes.
+   No visual/layout-specific styling here.
+   ═══════════════════════════════════════════════════════ */
+
+
+/* ======================================================
+   GLOBAL RESET
+   ====================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,195 @@
+/* ═══════════════════════════════════════════════════════
+   QuizPin — Global Styles
+   File: css/base/global.css
+   ═══════════════════════════════════════════════════════
+
+   PURPOSE
+   -------
+   Contains global application-wide styles.
+
+   This file handles:
+   - Body layout
+   - Global page system
+   - Shared animations
+   - Toast notifications
+   - Global loading overlay
+   - Shared utility-level layout behavior
+
+   IMPORTANT
+   ---------
+   - Only truly global styles belong here.
+   - Avoid page-specific or component-specific styling.
+   - Helps maintain a scalable CSS architecture.
+
+   RESPONSIVE
+   ----------
+   Fully responsive-safe.
+   Uses flexible layouts and scalable animations.
+   ═══════════════════════════════════════════════════════ */
+
+
+/* ======================================================
+   GLOBAL BODY
+   ====================================================== */
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ======================================================
+   GLOBAL PAGE SYSTEM
+   ====================================================== */
+
+.page {
+    display: none;
+    flex-direction: column;
+    flex: 1;
+    animation: fi .2s ease;
+}
+
+.page.active {
+    display: flex;
+}
+
+
+/* ======================================================
+   PAGE TRANSITION ANIMATION
+   ====================================================== */
+
+@keyframes fi {
+
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ======================================================
+   GLOBAL CARD
+   Shared reusable card container
+   ====================================================== */
+
+.card {
+    background: var(--surf);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r);
+    padding: 24px;
+}
+
+
+/* ======================================================
+   TOAST NOTIFICATION
+   ====================================================== */
+
+#toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: var(--surf2);
+    border: 1px solid var(--border);
+
+    padding: 12px 24px;
+    border-radius: 30px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    opacity: 0;
+    transition: opacity .3s;
+
+    pointer-events: none;
+    z-index: 999;
+
+    white-space: nowrap;
+}
+
+#toast.show {
+    opacity: 1;
+}
+
+
+/* ======================================================
+   GLOBAL LOADING OVERLAY
+   ====================================================== */
+
+#ld {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(7, 7, 26, .8);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 500;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity .25s;
+}
+
+#ld.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+/* ======================================================
+   LOADING SPINNER
+   ====================================================== */
+
+.sp {
+    width: 44px;
+    height: 44px;
+
+    border: 4px solid var(--border);
+    border-top-color: var(--al);
+
+    border-radius: 50%;
+
+    animation: spin .7s linear infinite;
+}
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ======================================================
+   DEMO MODE BANNER
+   ====================================================== */
+
+#dbanner {
+    background: #0d0d2a;
+    border-bottom: 1px solid var(--border);
+
+    padding: 8px 20px;
+
+    text-align: center;
+
+    font-size: 13px;
+    color: var(--muted);
+}
+
+#dbanner strong {
+    color: var(--yellow);
+}

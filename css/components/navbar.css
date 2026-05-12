@@ -1,0 +1,92 @@
+/* ═══════════════════════════════════════════════════════
+   QuizPin — Navigation Bar
+   File: css/components/navbar.css
+   ═══════════════════════════════════════════════════════
+
+   PURPOSE
+   -------
+   Handles the global top navigation bar.
+
+   This file contains:
+   - Navbar container
+   - Logo styles
+   - Right-side navigation actions
+   - User pill component
+
+   IMPORTANT
+   ---------
+   - Shared across the entire application.
+   - Keep only navbar-related styles here.
+   - Avoid page-specific styling.
+
+   RESPONSIVE
+   ----------
+   Uses flexible layouts and alignment.
+   Safe for desktop/tablet/mobile screens.
+   ═══════════════════════════════════════════════════════ */
+
+
+/* ======================================================
+   GLOBAL NAVBAR
+   ====================================================== */
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 24px;
+
+    background: var(--surf);
+    border-bottom: 1px solid var(--border);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+}
+
+
+/* ======================================================
+   APP LOGO
+   ====================================================== */
+
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+
+    letter-spacing: -1px;
+
+    cursor: pointer;
+}
+
+.logo span {
+    color: var(--al);
+}
+
+
+/* ======================================================
+   NAVBAR RIGHT SECTION
+   ====================================================== */
+
+.nav-r {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* ======================================================
+   USER INFO PILL
+   ====================================================== */
+
+.upill {
+    font-size: 13px;
+
+    color: var(--muted);
+    background: var(--surf2);
+
+    padding: 6px 14px;
+
+    border-radius: 20px;
+}
