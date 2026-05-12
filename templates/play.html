@@ -1,0 +1,68 @@
+<!-- templates/play.html -->
+<div class="page" id="page-play">
+    <div class="wrap">
+
+        <!-- Join form -->
+        <div class="pv on" id="pv-j">
+            <div class="card jcard">
+                <h2>🎮 Join Game</h2>
+                <p>Enter the PIN code and choose a nickname</p>
+                <div class="field">
+                    <label>PIN Code</label>
+                    <input type="text" id="ppin" class="pinlg" maxlength="6" placeholder="ABC123"
+                        oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'')">
+                </div>
+                <div class="field">
+                    <label>Nickname</label>
+                    <input type="text" id="pnick" placeholder="e.g. QuizMaster42" maxlength="20">
+                </div>
+                <div style="display:flex;gap:10px">
+                    <button class="btn bo" onclick="showPage('page-home')">← Back</button>
+                    <button class="btn bc blg" style="flex:1" onclick="joinGame()">Join →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Waiting (player) -->
+        <div class="pv" id="pv-w">
+            <div class="card pwait">
+                <span class="bi">⏳</span>
+                <h2>Waiting for host to start…</h2>
+                <p>Get ready, questions are coming!</p>
+                <div class="pnl" id="pnlbl"></div>
+            </div>
+        </div>
+
+        <!-- Question (player) -->
+        <div class="pv" id="pv-q">
+            <div class="ptimer" id="ptimer">20</div>
+            <div class="pqt" id="pqtext"></div>
+            <div class="pogrid" id="popts"></div>
+        </div>
+
+        <!-- Result -->
+        <div class="pv" id="pv-r">
+            <div class="card presult">
+                <div class="remi" id="premi"></div>
+                <div class="rlbl" id="prlbl"></div>
+                <div class="ptsbig" id="prpts"></div>
+                <div class="ranktext" id="prrk"></div>
+                <div class="wnext">Waiting for next question…</div>
+            </div>
+        </div>
+
+        <!-- Final (player) -->
+        <div class="pv" id="pv-f">
+            <div class="card pfinal">
+                <div class="tr">🏆</div>
+                <h2>Game Over!</h2>
+                <div class="tscore" id="pfscore">0</div>
+                <div class="rfinal" id="pfrank"></div>
+                <div style="margin-top:24px">
+                    <button class="btn bp" onclick="showPage('page-home')">Back to Home</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<!-- templates/host.html -->
+<div class="page" id="page-host">
+    <div class="wrap">
+
+        <!-- Waiting -->
+        <div class="hv on" id="hv-w">
+            <div class="pinbox">
+                <div class="pinlbl">Game PIN</div>
+                <div class="pinnum" id="hpin-disp">------</div>
+                <div class="pinhint">Players open this page and enter the PIN to join</div>
+            </div>
+            <div style="font-size:18px;font-weight:800;text-align:center" id="hqname"></div>
+            <div class="pbox">
+                <h3 id="hplbl">Players (0)</h3>
+                <div class="chips" id="hchips"></div>
+            </div>
+            <div class="hbtns">
+                <button class="btn bo" onclick="endGame()">Cancel</button>
+                <button class="btn bg blg" onclick="hostBegin()">▶ Start Game</button>
+            </div>
+        </div>
+
+        <!-- Question (Host view) -->
+        <div class="hv" id="hv-q">
+            <div class="qprog" id="hprog">Question 1 / 1</div>
+            <div class="qc">
+                <h2 id="hqtext"></h2>
+                <div class="hogrid" id="hopts"></div>
+            </div>
+            <div class="trow">
+                <div class="tnum" id="htnum">20</div>
+                <div class="ttrack">
+                    <div class="tfill" id="htfill" style="width:100%"></div>
+                </div>
+                <div class="acnt" id="hacnt">0 answered</div>
+            </div>
+        </div>
+
+        <!-- Reveal -->
+        <div class="hv" id="hv-r">
+            <div class="qc" style="width:100%">
+                <h2 id="hrvq" style="margin-bottom:18px"></h2>
+                <div class="rvgrid" id="hropts"></div>
+            </div>
+            <div class="lb" id="hlb"></div>
+            <button class="btn bp blg" id="bnext" onclick="hostNext()">Next Question →</button>
+        </div>
+
+        <!-- Final -->
+        <div class="hv" id="hv-f">
+            <div class="fcrd">
+                <div class="tr">🏆</div>
+                <h2>Game Over!</h2>
+                <p class="fs">Final Leaderboard</p>
+                <div class="lb" id="hflb"></div>
+                <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+                    <button class="btn bo" onclick="endGame()">Home</button>
+                    <button class="btn bp" onclick="goCreate()">New Quiz</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
