@@ -30,7 +30,7 @@ async function goLibrary() {
                     <div class="lc-head">
                         <h3>${q.title || 'Untitled Quiz'}</h3>
                         <div class="lc-acts">
-                            <button class="icon-btn" onclick="renameQuiz('${doc.id}', '${(q.title || '').replace(/'/g, "\\'")}')" title="Rename">✏️</button>
+                            <button class="icon-btn" onclick="editQuiz('${doc.id}', '${qJson}')" title="Edit">✏️</button>
                             <button class="icon-btn" onclick="deleteQuiz('${doc.id}')" title="Delete">🗑️</button>
                         </div>
                     </div>
@@ -72,22 +72,31 @@ window.deleteQuiz = async function(id) {
     ld(false);
 }
 
-window.renameQuiz = async function(id, currentTitle) {
-    const newTitle = prompt("Enter new name for the quiz:", currentTitle);
-    if (newTitle === null || newTitle.trim() === "" || newTitle === currentTitle) return;
-    
-    ld(true);
+window.editQuiz = function(id, qJsonEncoded) {
     try {
-        await db.collection('quizzes').doc(id).update({
-            title: newTitle.trim()
-        });
-        toast('✅ Quiz renamed!');
-        goLibrary(); // Refresh the list
+        const q = JSON.parse(decodeURIComponent(qJsonEncoded));
+        window.editingQuizId = id;
+        document.getElementById('qtitle').value = q.title || '';
+        document.getElementById('qcont').innerHTML = '';
+        
+        if (q.questions && q.questions.length) {
+            q.questions.forEach(qs => addQ(qs));
+        } else {
+            addQ();
+        }
+        
+        const bsave = document.getElementById('bsave');
+        if (bsave) {
+            bsave.disabled = false;
+            bsave.textContent = '💾 Save Changes';
+        }
+        
+        showPage('page-create');
+        updateNav();
     } catch (e) {
-        toast('❌ Failed to rename: ' + e.message);
+        toast('❌ Error loading quiz for edit');
         console.error(e);
     }
-    ld(false);
 }
 
 window.goLibrary = goLibrary;

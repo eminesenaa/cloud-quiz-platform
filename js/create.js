@@ -3,6 +3,7 @@
    ═══════════════════════════════ */
 
 function goCreate() {
+    window.editingQuizId = null;
     window.quiz = { title: '', questions: [] };
     document.getElementById('qtitle').value = '';
     document.getElementById('qcont').innerHTML = '';
@@ -18,32 +19,38 @@ function goCreate() {
     updateNav();
 }
 
-function addQ() {
+function addQ(initData) {
     const c = document.getElementById('qcont');
     const i = c.children.length;
     const d = document.createElement('div');
     d.className = 'qcard';
+    
+    const text = initData ? initData.text : '';
+    const opts = initData && initData.options ? initData.options : ['', '', '', ''];
+    const correct = initData ? initData.correct : -1;
+    const time = initData ? initData.time : 20;
+
     d.innerHTML = `
     <div class="qhdr">
       <span class="qnum">Q${i + 1}</span>
-      <input type="text" class="qtinp" placeholder="Type your question here…">
+      <input type="text" class="qtinp" placeholder="Type your question here…" value="${text.replace(/"/g, '&quot;')}">
       <button class="qdel" onclick="delQ(this)">🗑 Delete</button>
     </div>
     <div class="ogrid">
       ${[0, 1, 2, 3].map(j => `
         <div class="orow">
-          <span class="odot" style="background:${OC[j]}"></span>
-          <input type="text" placeholder="Option ${j + 1}" class="oinp">
-          <input type="radio" name="cq${i}" value="${j}" class="orb" title="Correct answer">
+          <span class="odot" style="background:${window.OC[j]}"></span>
+          <input type="text" placeholder="Option ${j + 1}" class="oinp" value="${opts[j].replace(/"/g, '&quot;')}">
+          <input type="radio" name="cq${i}" value="${j}" class="orb" title="Correct answer" ${correct === j ? 'checked' : ''}>
         </div>`).join('')}
     </div>
     <div class="qfoot">
       <label>⏱ Time:</label>
       <select class="qtime">
-        <option value="10">10 s</option>
-        <option value="20" selected>20 s</option>
-        <option value="30">30 s</option>
-        <option value="60">60 s</option>
+        <option value="10" ${time === 10 ? 'selected' : ''}>10 s</option>
+        <option value="20" ${time === 20 ? 'selected' : ''}>20 s</option>
+        <option value="30" ${time === 30 ? 'selected' : ''}>30 s</option>
+        <option value="60" ${time === 60 ? 'selected' : ''}>60 s</option>
       </select>
       <span class="hint">📌 Radio = correct answer</span>
     </div>`;
@@ -96,12 +103,21 @@ async function saveQuiz() {
     if (!q) return;
     ld(true);
     try {
-        await db.collection('quizzes').add({
-            ...q,
-            uid: curUser.uid,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        });
-        toast('✅ Quiz saved!');
+        if (window.editingQuizId) {
+            await db.collection('quizzes').doc(window.editingQuizId).update({
+                ...q,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            toast('✅ Quiz updated!');
+        } else {
+            const ref = await db.collection('quizzes').add({
+                ...q,
+                uid: curUser.uid,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            window.editingQuizId = ref.id;
+            toast('✅ Quiz saved!');
+        }
         const bsave = document.getElementById('bsave');
         if (bsave) {
             bsave.disabled = true;
