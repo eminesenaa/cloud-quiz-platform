@@ -137,6 +137,7 @@ async function doGoogle() {
     ld(false);
 }
 async function doLogout() {
+    if (!confirm("Are you sure you want to sign out?")) return;
     await auth.signOut();
     toast('👋 Signed out');
 }
