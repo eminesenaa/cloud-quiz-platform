@@ -168,6 +168,8 @@ async function hostEnd() {
     }
     renderLB('hflb', d.scores || {}, d.players || {}, 10);
     showHV('hv-f');
+    const hsaveBtn = document.getElementById('hsave-btn');
+    if (hsaveBtn) hsaveBtn.style.display = curUser ? 'inline-flex' : 'none';
 }
 
 function renderLB(elId, scores, players, lim) {
@@ -214,3 +216,24 @@ function demoHostMsg(msg) {
     }
 }
 window.demoHostMsg = demoHostMsg;
+
+async function hostSaveQuiz() {
+    if (!curUser) {
+        toast('⚠️ Sign in to save quizzes');
+        return openAuth();
+    }
+    if (!quiz) return toast('❌ No quiz to save');
+    ld(true);
+    try {
+        await db.collection('quizzes').add({
+            ...quiz,
+            uid: curUser.uid,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        toast('✅ Quiz saved!');
+        document.getElementById('hsave-btn').disabled = true;
+        document.getElementById('hsave-btn').textContent = '✅ Saved';
+    } catch (e) { toast('❌ ' + e.message); }
+    ld(false);
+}
+window.hostSaveQuiz = hostSaveQuiz;

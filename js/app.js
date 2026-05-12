@@ -73,16 +73,19 @@ window.genPin = genPin;
 // ── NAV ──
 function updateNav() {
     const el = document.getElementById('navr');
+    const hsaveBtn = document.getElementById('hsave-btn');
     if (curUser) {
         el.innerHTML = `
       <span class="upill">👤 ${curUser.displayName || curUser.email.split('@')[0]}</span>
       <button class="btn bo bsm" onclick="doLogout()">Sign Out</button>`;
         const b = document.getElementById('bsave');
         if (b) b.style.display = 'inline-flex';
+        if (hsaveBtn) hsaveBtn.style.display = 'inline-flex';
     } else {
         el.innerHTML = `<button class="btn bo bsm" onclick="openAuth()">Sign In</button>`;
         const b = document.getElementById('bsave');
         if (b) b.style.display = 'none';
+        if (hsaveBtn) hsaveBtn.style.display = 'none';
     }
 }
 window.updateNav = updateNav;
@@ -115,11 +118,12 @@ async function doLogin() {
 async function doReg() {
     ld(true);
     try {
-        await auth.createUserWithEmailAndPassword(
+        const cred = await auth.createUserWithEmailAndPassword(
             document.getElementById('re').value,
             document.getElementById('rp').value
         );
-        closeAuth(); toast('✅ Account created!');
+        await cred.user.sendEmailVerification();  // ← bunu ekle
+        closeAuth(); toast('✅ Doğrulama emaili gönderildi!');
     } catch (e) { toast('❌ ' + e.message); }
     ld(false);
 }
