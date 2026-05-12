@@ -26,7 +26,8 @@ if (!DEMO) {
     window.db = firebase.firestore();
     window.auth = firebase.auth();
     window.fbOK = true;
-    document.getElementById('dbanner').style.display = 'none';
+    const b = document.getElementById('dbanner');
+    if (b) b.style.display = 'none';
     auth.onAuthStateChanged(u => { window.curUser = u; updateNav(); });
 }
 
