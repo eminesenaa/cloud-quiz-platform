@@ -29,467 +29,588 @@
    Mobile-first stacking included.
    ═══════════════════════════════════════════════════════ */
 
-
 /* ======================================================
    PLAY PAGE WRAPPER
    ====================================================== */
 
 #page-play .wrap {
-    flex: 1;
+  min-height: calc(100vh - 72px);
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    gap: 20px;
-
-    padding: 24px 16px;
+  padding: 32px 20px;
 }
-
 
 /* ======================================================
    PLAYER VIEW CONTAINER
    ====================================================== */
 
 .pv {
-    width: 100%;
-    max-width: 520px;
+  width: 100%;
+  max-width: 520px;
 
-    display: none;
-    flex-direction: column;
-    align-items: center;
+  display: none;
+  flex-direction: column;
+  align-items: center;
 
-    gap: 16px;
+  gap: 16px;
 }
 
 .pv.on {
-    display: flex;
+  display: flex;
 }
-
 
 /* ======================================================
    JOIN CARD
    ====================================================== */
 
 .jcard {
-    width: 100%;
+  width: 100%;
+  max-width: 640px;
+
+  padding: 36px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  border: 1.5px solid rgba(192, 132, 252, 0.14);
+
+  border-radius: 28px;
+
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 0 40px rgba(168, 85, 247, 0.08),
+    0 10px 40px rgba(0, 0, 0, 0.35);
 }
 
 .jcard h2 {
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 
-    font-size: 26px;
-    font-weight: 900;
+  font-size: 26px;
+  font-weight: 900;
 }
 
 .jcard p {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 
-    font-size: 14px;
+  font-size: 14px;
 
-    color: var(--muted);
+  color: var(--muted);
 }
 
+.join-title {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 6px;
+
+  font-size: 42px;
+  font-weight: 900;
+}
+
+.join-title i {
+  font-size: 34px;
+
+  color: #c084fc;
+}
+
+.join-actions {
+  display: flex;
+  gap: 12px;
+
+  margin-top: 6px;
+}
+
+.join-actions .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+}
 
 /* ======================================================
    LARGE PIN INPUT
    ====================================================== */
 
 .pinlg {
-    padding: 14px !important;
+  height: 78px;
 
-    text-align: center !important;
+  padding: 14px !important;
 
-    font-size: 26px !important;
-    font-weight: 900 !important;
+  text-align: center !important;
 
-    letter-spacing: 8px !important;
+  font-size: 42px !important;
+  font-weight: 900 !important;
+
+  letter-spacing: 10px !important;
+
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1.5px solid rgba(192, 132, 252, 0.14);
+
+  border-radius: 20px;
+
+  transition: all 0.18s ease;
 }
 
+.jcard input,
+.jcard input:focus,
+.jcard input:active {
+  background: rgba(255, 255, 255, 0.04) !important;
+
+  color: #fff !important;
+
+  border: 1.5px solid rgba(192, 132, 252, 0.14);
+
+  outline: none;
+
+  box-shadow: none;
+}
+
+.jcard input:-webkit-autofill,
+.jcard input:-webkit-autofill:hover,
+.jcard input:-webkit-autofill:focus,
+.jcard input:-webkit-autofill:active {
+  -webkit-text-fill-color: #fff;
+
+  transition: background-color 9999s ease-in-out 0s;
+
+  box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.04) inset;
+}
 
 /* ======================================================
    WAITING SCREEN
    ====================================================== */
 
 .pwait {
-    width: 100%;
+  width: 100%;
 
-    padding: 40px;
+  padding: 40px;
 
-    text-align: center;
+  text-align: center;
 }
-
 
 /* ======================================================
    WAITING ICON
    ====================================================== */
 
 .pwait .bi {
-    display: block;
+  display: block;
 
-    margin-bottom: 14px;
+  margin-bottom: 14px;
 
-    font-size: 56px;
+  font-size: 56px;
 
-    animation: fl 2s ease-in-out infinite;
+  animation: fl 2s ease-in-out infinite;
 }
-
 
 /* ======================================================
    FLOAT ANIMATION
    ====================================================== */
 
 @keyframes fl {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
 
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-8px);
-    }
+  50% {
+    transform: translateY(-8px);
+  }
 }
-
 
 /* ======================================================
    WAITING TITLE
    ====================================================== */
 
 .pwait h2 {
-    margin-bottom: 6px;
+  margin-bottom: 6px;
 
-    font-size: 22px;
-    font-weight: 800;
+  font-size: 22px;
+  font-weight: 800;
 }
-
 
 /* ======================================================
    WAITING DESCRIPTION
    ====================================================== */
 
 .pwait p {
-    font-size: 14px;
+  font-size: 14px;
 
-    color: var(--muted);
+  color: var(--muted);
 }
-
 
 /* ======================================================
    PLAYER NAME LABEL
    ====================================================== */
 
 .pnl {
-    margin-top: 12px;
+  margin-top: 12px;
 
-    font-size: 13px;
-    font-weight: 700;
+  font-size: 13px;
+  font-weight: 700;
 
-    color: var(--al);
+  color: var(--al);
 }
-
 
 /* ======================================================
    PLAYER TIMER
    ====================================================== */
 
 .ptimer {
-    font-size: 52px;
-    font-weight: 900;
+  font-size: 52px;
+  font-weight: 900;
 
-    color: var(--al);
+  color: var(--al);
 }
-
 
 /* ======================================================
    QUESTION TITLE
    ====================================================== */
 
 .pqt {
-    max-width: 480px;
+  max-width: 480px;
 
-    text-align: center;
+  text-align: center;
 
-    font-size: clamp(18px, 4vw, 24px);
-    font-weight: 800;
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: 800;
 
-    line-height: 1.4;
+  line-height: 1.4;
 }
-
 
 /* ======================================================
    PLAYER OPTION GRID
    ====================================================== */
 
 .pogrid {
-    width: 100%;
+  width: 100%;
 
-    display: grid;
+  display: grid;
 
-    grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 
-    gap: 12px;
+  gap: 12px;
 }
-
 
 /* ======================================================
    PLAYER OPTION BUTTON
    ====================================================== */
 
 .popt {
-    min-height: 80px;
+  min-height: 80px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 
-    gap: 8px;
+  gap: 14px;
 
-    padding: 22px 14px;
+  padding: 22px 20px;
 
-    border: none;
-    border-radius: 14px;
+  border: none;
+  border-radius: 14px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    color: #fff;
+  color: #fff;
 
-    text-align: center;
+  text-align: left;
 
-    font-size: clamp(14px, 3vw, 17px);
-    font-weight: 800;
-    font-family: inherit;
+  font-size: clamp(14px, 3vw, 17px);
+  font-weight: 800;
+  font-family: inherit;
 
-    transition:
-        transform .1s,
-        filter .15s,
-        box-shadow .2s;
+  transition:
+    transform 0.1s,
+    filter 0.15s,
+    box-shadow 0.2s;
+}
+/* ======================================================
+   PLAYER OPTION LETTER
+   ====================================================== */
+
+.popt-letter {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 0 18px rgba(255, 255, 255, 0.08);
+
+  font-size: 16px;
+  font-weight: 900;
+
+  color: #fff;
 }
 
+/* ======================================================
+   PLAYER OPTION TEXT
+   ====================================================== */
+
+.popt-text {
+  display: flex;
+  align-items: center;
+}
+
+.remi i {
+  font-size: 64px;
+}
+
+.remi .ph-check-circle {
+  color: #22c55e;
+}
+
+.remi .ph-x-circle {
+  color: #ef4444;
+}
 
 /* ======================================================
    OPTION INTERACTIONS
    ====================================================== */
 
 .popt:hover:not(:disabled) {
-    filter: brightness(1.15);
-    transform: scale(1.03);
+  filter: brightness(1.15);
+  transform: scale(1.03);
 }
 
 .popt:active:not(:disabled) {
-    transform: scale(0.97);
+  transform: scale(0.97);
 }
 
 .popt:disabled {
-    cursor: not-allowed;
+  cursor: not-allowed;
 
-    filter: none;
-    transform: none;
+  filter: none;
+  transform: none;
 }
-
 
 /* ======================================================
    SELECTED OPTION
    ====================================================== */
 
 .popt.sel {
-    box-shadow:
-        0 0 0 4px #fff,
-        0 0 20px rgba(255, 255, 255, .2);
+  box-shadow:
+    0 0 0 4px #fff,
+    0 0 20px rgba(255, 255, 255, 0.2);
 }
-
 
 /* ======================================================
    RESULT SCREEN
    ====================================================== */
 
 .presult {
-    width: 100%;
+  width: 100%;
 
-    padding: 36px;
+  padding: 36px;
 
-    text-align: center;
+  text-align: center;
 }
-
 
 /* ======================================================
    RESULT EMOJI
    ====================================================== */
 
 .remi {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 
-    font-size: 56px;
+  font-size: 56px;
 }
-
 
 /* ======================================================
    RESULT LABEL
    ====================================================== */
 
 .rlbl {
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 
-    font-size: 24px;
-    font-weight: 800;
+  font-size: 24px;
+  font-weight: 800;
 }
-
 
 /* ======================================================
    POINT DISPLAY
    ====================================================== */
 
 .ptsbig {
-    font-size: 56px;
-    font-weight: 900;
+  font-size: 56px;
+  font-weight: 900;
 
-    animation: pop .4s ease;
+  animation: pop 0.4s ease;
 }
 
 .ptsbig.c {
-    color: var(--green);
+  color: var(--green);
 }
 
 .ptsbig.w {
-    color: var(--red);
+  color: var(--red);
 }
-
 
 /* ======================================================
    RANK TEXT
    ====================================================== */
 
 .ranktext {
-    margin-top: 8px;
+  margin-top: 8px;
 
-    font-size: 15px;
+  font-size: 15px;
 
-    color: var(--muted);
+  color: var(--muted);
 }
-
 
 /* ======================================================
    WAITING NEXT LABEL
    ====================================================== */
 
 .wnext {
-    margin-top: 16px;
+  margin-top: 16px;
 
-    font-size: 13px;
+  font-size: 13px;
 
-    color: var(--muted);
+  color: var(--muted);
 
-    animation: pu 1.5s ease-in-out infinite;
+  animation: pu 1.5s ease-in-out infinite;
 }
-
 
 /* ======================================================
    PULSE ANIMATION
    ====================================================== */
 
 @keyframes pu {
+  0%,
+  100% {
+    opacity: 1;
+  }
 
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: .3;
-    }
+  50% {
+    opacity: 0.3;
+  }
 }
-
 
 /* ======================================================
    FINAL SCREEN
    ====================================================== */
 
 .pfinal {
-    width: 100%;
+  width: 100%;
 
-    padding: 40px;
+  padding: 40px;
 
-    text-align: center;
+  text-align: center;
 }
-
 
 /* ======================================================
    FINAL TROPHY
    ====================================================== */
 
 .pfinal .tr {
-    margin-bottom: 12px;
+  margin-bottom: 12px;
 
-    font-size: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 72px;
+
+  color: #c084fc;
+
+  text-shadow:
+    0 0 18px rgba(192, 132, 252, 0.35),
+    0 0 42px rgba(192, 132, 252, 0.16);
 }
-
 
 /* ======================================================
    FINAL TITLE
    ====================================================== */
 
 .pfinal h2 {
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 
-    font-size: 26px;
-    font-weight: 900;
+  font-size: 26px;
+  font-weight: 900;
 }
-
 
 /* ======================================================
    TOTAL SCORE
    ====================================================== */
 
 .tscore {
-    margin: 8px 0;
+  margin: 8px 0;
 
-    font-size: 64px;
-    font-weight: 900;
+  font-size: 64px;
+  font-weight: 900;
 
-    line-height: 1;
+  line-height: 1;
 
-    color: var(--cyan);
+  background: linear-gradient(135deg, #d946ef, #c084fc, #f0abfc);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 0 0 18px rgba(192, 132, 252, 0.22);
 }
-
 
 /* ======================================================
    FINAL RANK
    ====================================================== */
 
 .rfinal {
-    font-size: 16px;
+  font-size: 16px;
 
-    color: var(--muted);
+  color: var(--muted);
 }
-
 
 /* ======================================================
    MOBILE RESPONSIVE
    ====================================================== */
 
 @media (max-width: 640px) {
+  .pogrid {
+    grid-template-columns: 1fr;
+  }
 
-    .pogrid {
-        grid-template-columns: 1fr;
-    }
+  .pwait,
+  .presult,
+  .pfinal {
+    padding: 28px 20px;
+  }
 
-    .pwait,
-    .presult,
-    .pfinal {
-        padding: 28px 20px;
-    }
+  .ptimer {
+    font-size: 42px;
+  }
 
-    .ptimer {
-        font-size: 42px;
-    }
+  .tscore {
+    font-size: 52px;
+  }
 
-    .tscore {
-        font-size: 52px;
-    }
-
-    .pinlg {
-        letter-spacing: 5px !important;
-        font-size: 22px !important;
-    }
+  .pinlg {
+    letter-spacing: 5px !important;
+    font-size: 22px !important;
+  }
 }

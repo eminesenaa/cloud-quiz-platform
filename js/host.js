@@ -4,6 +4,10 @@
 
 let hunsub = null;
 
+const OS = ["A", "B", "C", "D"];
+
+const OC = ["#ff4d6d", "#4f8cff", "#14d19b", "#ffb020"];
+
 // ── QR Code ──
 function generateQR(pin) {
   const el = document.getElementById("qr-code");
@@ -126,9 +130,13 @@ async function showHQ(idx) {
   document.getElementById("hopts").innerHTML = q.options
     .map(
       (o, i) => `
-    <div class="hopt" style="background:${OC[i]}">
-      <span class="osh">${OS[i]}</span>${o}
-    </div>`,
+  <div class="hopt" style="
+    background:${OC[i]};
+    box-shadow: 0 10px 24px ${OC[i]}25;
+  ">
+    <span class="osh">${OS[i]}</span>
+    <span>${o}</span>
+  </div>`,
     )
     .join("");
 
@@ -199,11 +207,21 @@ async function revealH(idx) {
   document.getElementById("hropts").innerHTML = q.options
     .map(
       (o, i) => `
-    <div class="rvopt${i === q.correct ? " ok" : ""}" style="background:${OC[i]}">
-      <span>${OS[i]}</span>${o}
-      <span class="rvcnt">${counts[i]}</span>
-      <div class="rvbar" style="width:${Math.round((counts[i] / tot) * 100)}%"></div>
-    </div>`,
+  <div class="rvopt${i === q.correct ? " ok" : ""}" style="
+    background:${OC[i]};
+    box-shadow: 0 10px 24px ${OC[i]}22;
+  ">
+    <span class="osh">${OS[i]}</span>
+
+    <span>${o}</span>
+
+    <span class="rvcnt">${counts[i]}</span>
+
+    <div class="rvbar" style="
+      width:${Math.round((counts[i] / tot) * 100)}%;
+      background:rgba(255,255,255,0.28);
+    "></div>
+  </div>`,
     )
     .join("");
 
@@ -239,7 +257,7 @@ async function hostEnd() {
 }
 
 function renderLB(elId, scores, players, lim) {
-  const med = ["🥇", "🥈", "🥉"];
+  const med = ["1", "2", "3"];
   const rows = Object.entries(scores)
     .sort((a, b) => b[1] - a[1])
     .slice(0, lim);
@@ -248,7 +266,9 @@ function renderLB(elId, scores, players, lim) {
         .map(
           ([uid, pts], i) => `
         <div class="lbrow">
-          <span class="lbm">${med[i] || i + 1}</span>
+          <span class="lbm">
+  <span class="lbm-circle">${i + 1}</span>
+</span>
           <span class="lbn">${players[uid] || uid.slice(0, 8)}</span>
           <span class="lbp">${pts} pts</span>
         </div>`,
