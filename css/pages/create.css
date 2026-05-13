@@ -249,6 +249,22 @@
   font-size: 14px;
 }
 
+/* =========================================
+   INPUT AUTOFILL FIX
+   ========================================= */
+
+#page-create input:-webkit-autofill,
+#page-create input:-webkit-autofill:hover,
+#page-create input:-webkit-autofill:focus,
+#page-create textarea:-webkit-autofill,
+#page-create select:-webkit-autofill {
+  -webkit-text-fill-color: var(--text);
+
+  -webkit-box-shadow: 0 0 0px 1000px var(--surf2) inset;
+
+  transition: background-color 9999s ease-in-out 0s;
+}
+
 /* ======================================================
    CORRECT ANSWER RADIO
    ====================================================== */
