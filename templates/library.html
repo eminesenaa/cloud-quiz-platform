@@ -1,7 +1,10 @@
 <div class="page" id="page-library">
     <div class="wrap">
-        <div class="ph">
-            <h2>📚 My Library</h2>
+        <div class="library-header">
+            <h2 class="lib-title">
+                <i class="ph-fill ph-books"></i>
+                My Library
+            </h2>
             <p>Your saved quizzes appear here. Click "Launch" to start a new game.</p>
         </div>
 
@@ -9,8 +12,14 @@
         </div>
 
         <div class="abar">
-            <button class="btn bo" onclick="showPage('page-home')">← Back</button>
-            <button class="btn bp" onclick="goCreate()">＋ Create New Quiz</button>
+            <button class="btn bo library-back-btn" onclick="showPage('page-home')">
+                <i class="ph-bold ph-arrow-left"></i>
+                Back
+            </button>
+            <button class="btn bp library-create-btn" onclick="goCreate()">
+                <i class="ph-bold ph-plus"></i>
+                Create New Quiz
+            </button>
         </div>
     </div>
 </div>

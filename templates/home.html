@@ -6,24 +6,27 @@
 
         <div class="hcards">
             <div class="hcard" onclick="goCreate()">
-                <span class="ico">🎯</span>
+                <i class="ph ph-target ico"></i>
                 <h3>Create Quiz</h3>
                 <p>Write your questions, get a PIN, invite your friends</p>
             </div>
             <div class="hcard" onclick="document.getElementById('hpin').focus()">
-                <span class="ico">🎮</span>
+                <i class="ph ph-game-controller ico"></i>
                 <h3>Join Game</h3>
                 <p>Enter a PIN code to join instantly</p>
-                <span class="badge">PIN only</span>
+                <span class="badge">PIN ONLY</span>
             </div>
         </div>
 
         <div class="jbox">
-            <h3>Have a PIN? Join now 👇</h3>
+            <h3>Have a PIN? Join instantly</h3>
             <div class="jrow">
                 <input type="text" id="hpin" class="pinbig" maxlength="6" placeholder="PIN"
                     oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'')">
-                <button class="btn bc blg" onclick="goJoin()">Join →</button>
+                <button class="btn bc blg join-btn" onclick="goJoin()">
+                    Join
+                    <i class="ph-bold ph-arrow-right"></i>
+                </button>
             </div>
         </div>
     </div>

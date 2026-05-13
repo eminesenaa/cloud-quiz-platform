@@ -5,7 +5,10 @@
         <!-- Join form -->
         <div class="pv on" id="pv-j">
             <div class="card jcard">
-                <h2>🎮 Join Game</h2>
+                <h2 class="join-title">
+                    <i class="ph-fill ph-game-controller"></i>
+                    Join Game
+                </h2>
                 <p>Enter the PIN code and choose a nickname</p>
                 <div class="field">
                     <label>PIN Code</label>
@@ -16,9 +19,15 @@
                     <label>Nickname</label>
                     <input type="text" id="pnick" placeholder="e.g. QuizMaster42" maxlength="20">
                 </div>
-                <div style="display:flex;gap:10px">
-                    <button class="btn bo" onclick="showPage('page-home')">← Back</button>
-                    <button class="btn bc blg" style="flex:1" onclick="joinGame()">Join →</button>
+                <div class="join-actions">
+                    <button class="btn bo join-back-btn" onclick="showPage('page-home')">
+                        <i class="ph-bold ph-arrow-left"></i>
+                        Back
+                    </button>
+                    <button class="btn bc blg join-submit-btn" style="flex:1" onclick="joinGame()">
+                        Join
+                        <i class="ph-bold ph-arrow-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -26,7 +35,9 @@
         <!-- Waiting (player) -->
         <div class="pv" id="pv-w">
             <div class="card pwait">
-                <span class="bi">⏳</span>
+                <span class="bi">
+                    <i class="ph-fill ph-hourglass-medium"></i>
+                </span>
                 <h2>Waiting for host to start…</h2>
                 <p>Get ready, questions are coming!</p>
                 <div class="pnl" id="pnlbl"></div>
@@ -54,7 +65,9 @@
         <!-- Final (player) -->
         <div class="pv" id="pv-f">
             <div class="card pfinal">
-                <div class="tr">🏆</div>
+                <div class="tr">
+                    <i class="ph-fill ph-trophy"></i>
+                </div>
                 <h2>Game Over!</h2>
                 <div class="tscore" id="pfscore">0</div>
                 <div class="rfinal" id="pfrank"></div>

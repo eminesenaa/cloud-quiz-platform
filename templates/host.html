@@ -11,15 +11,16 @@
                     <div class="pinlbl">Game PIN</div>
                     <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
                         <div class="pinnum" id="hpin-disp">------</div>
-                        <button class="icon-btn" onclick="copyPin()" title="Copy PIN" style="font-size: 1.5rem; color: var(--fg); padding: 4px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);">📋</button>
+                        <button class="icon-btn" onclick="copyPin()" title="Copy PIN">
+                            <i class="ph ph-copy-simple"></i>
+                        </button>
                     </div>
                 </div>
 
                 <!-- QR Code -->
-                <div class="qr-wrap">
-                    <div class="qr-label">or scan to join</div>
+                <div class="qr-simple">
+                    <div class="qr-label">Scan to Join</div>
                     <div id="qr-code"></div>
-                    <div class="qr-hint"></div>
                 </div>
             </div>
 
@@ -30,7 +31,10 @@
             </div>
             <div class="hbtns">
                 <button class="btn bo" onclick="endGame()">Cancel</button>
-                <button class="btn bg blg" onclick="hostBegin()">▶ Start Game</button>
+                <button class="btn bp blg host-start-btn" onclick="hostBegin()">
+                    Start Game
+                    <i class="ph-fill ph-play"></i>
+                </button>
             </div>
         </div>
 
@@ -63,7 +67,9 @@
         <!-- Final -->
         <div class="hv" id="hv-f">
             <div class="fcrd">
-                <div class="tr">🏆</div>
+                <div class="tr">
+                    <i class="ph-fill ph-trophy"></i>
+                </div>
                 <h2>Game Over!</h2>
                 <p class="fs">Final Leaderboard</p>
                 <div class="lb" id="hflb"></div>

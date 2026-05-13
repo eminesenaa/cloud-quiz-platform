@@ -101,8 +101,22 @@
    ====================================================== */
 
 .bc {
-    background: var(--cyan);
-    color: #000;
+    background:
+        linear-gradient(135deg,
+            #a855f7,
+            #c084fc);
+
+    color: #fff;
+
+    box-shadow:
+        0 10px 30px rgba(168, 85, 247, 0.25);
+}
+
+.bc:hover {
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 14px 34px rgba(168, 85, 247, 0.34);
 }
 
 
