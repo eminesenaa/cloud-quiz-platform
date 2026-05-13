@@ -7,12 +7,12 @@
 //  Leave empty to run in Demo Mode (localStorage)
 // ─────────────────────────────────────────────
 const FBC = {
-    apiKey: "AIzaSyDgvV-KfLFXDDtRoU9xcP_hkJIzulHaW2M",
-    authDomain: "quizpin433.firebaseapp.com",
-    projectId: "quizpin433",
-    storageBucket: "quizpin433.firebasestorage.app",
-    messagingSenderId: "515415605824",
-    appId: "1:515415605824:web:53b3387771a100ba8955a5"
+  apiKey: "AIzaSyDgvV-KfLFXDDtRoU9xcP_hkJIzulHaW2M",
+  authDomain: "quizpin433.firebaseapp.com",
+  projectId: "quizpin433",
+  storageBucket: "quizpin433.firebasestorage.app",
+  messagingSenderId: "515415605824",
+  appId: "1:515415605824:web:53b3387771a100ba8955a5",
 };
 // ─────────────────────────────────────────────
 
@@ -22,48 +22,56 @@ window.auth = null;
 window.fbOK = false;
 
 if (!DEMO) {
-    firebase.initializeApp(FBC);
-    window.db = firebase.firestore();
-    window.auth = firebase.auth();
-    window.fbOK = true;
-    const b = document.getElementById('dbanner');
-    if (b) b.style.display = 'none';
-    auth.onAuthStateChanged(u => { window.curUser = u; updateNav(); });
+  firebase.initializeApp(FBC);
+  window.db = firebase.firestore();
+  window.auth = firebase.auth();
+  window.fbOK = true;
+  const b = document.getElementById("dbanner");
+  if (b) b.style.display = "none";
+  auth.onAuthStateChanged((u) => {
+    window.curUser = u;
+    updateNav();
+  });
 }
 
 // ── SHARED STATE ──
 window.curUser = null;
-window.quiz = null;   // { title, questions[] }
-window.session = null;   // { pin, id }
+window.quiz = null; // { title, questions[] }
+window.session = null; // { pin, id }
 window.qIdx = 0;
 window.tInt = null;
 
 // ── CONSTANTS ──
-window.OC = ['var(--ca)', 'var(--cb)', 'var(--cc)', 'var(--cd)'];
-window.OS = ['▲', '◆', '●', '■'];
-window.LS = 'qp_sess';
+window.OC = ["var(--ca)", "var(--cb)", "var(--cc)", "var(--cd)"];
+window.OS = ["▲", "◆", "●", "■"];
+window.LS = "qp_sess";
 
 // ── ROUTER ──
 function showPage(id) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+  document
+    .querySelectorAll(".page")
+    .forEach((p) => p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
 }
 window.showPage = showPage;
 
 // ── UTILS ──
 function toast(m, d = 3000) {
-    const t = document.getElementById('toast');
-    t.textContent = m;
-    t.classList.add('show');
-    clearTimeout(t._t);
-    t._t = setTimeout(() => t.classList.remove('show'), d);
+  const t = document.getElementById("toast");
+  t.textContent = m;
+  t.classList.add("show");
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove("show"), d);
 }
 function ld(on) {
-    document.getElementById('ld').classList.toggle('show', on);
+  document.getElementById("ld").classList.toggle("show", on);
 }
 function genPin() {
-    const c = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    return Array.from({ length: 6 }, () => c[Math.floor(Math.random() * c.length)]).join('');
+  const c = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  return Array.from(
+    { length: 6 },
+    () => c[Math.floor(Math.random() * c.length)],
+  ).join("");
 }
 
 window.toast = toast;
@@ -72,74 +80,108 @@ window.genPin = genPin;
 
 // ── NAV ──
 function updateNav() {
-    const el = document.getElementById('navr');
-    const hsaveBtn = document.getElementById('hsave-btn');
-    if (curUser) {
-        el.innerHTML = `
-      <span class="upill" style="cursor:pointer" onclick="goLibrary()">📚 Library</span>
-      <span class="upill">👤 ${curUser.displayName || curUser.email.split('@')[0]}</span>
-      <button class="btn bo bsm" onclick="doLogout()">Sign Out</button>`;
-        const b = document.getElementById('bsave');
-        if (b) b.style.display = 'inline-flex';
-        if (hsaveBtn) hsaveBtn.style.display = 'inline-flex';
-    } else {
-        el.innerHTML = `<button class="btn bo bsm" onclick="openAuth()">Sign In</button>`;
-        const b = document.getElementById('bsave');
-        if (b) b.style.display = 'none';
-        if (hsaveBtn) hsaveBtn.style.display = 'none';
-    }
+  const el = document.getElementById("navr");
+  const hsaveBtn = document.getElementById("hsave-btn");
+  if (curUser) {
+    el.innerHTML = `
+    <button class="nav-action-btn" onclick="goLibrary()">
+        <i class="ph-fill ph-books"></i>
+        <span>Library</span>
+    </button>
+
+    <div class="user-inline">
+        <div class="user-avatar">
+            <i class="ph-fill ph-user"></i>
+        </div>
+
+        <div class="user-meta">
+            <span class="user-label">Signed in as</span>
+            <span class="user-name">
+                ${curUser.displayName || curUser.email.split("@")[0]}
+            </span>
+        </div>
+    </div>
+
+    <button class="logout-icon-btn" onclick="doLogout()" title="Sign Out">
+    <i class="ph-bold ph-sign-out"></i>
+</button>
+`;
+    const b = document.getElementById("bsave");
+    if (b) b.style.display = "inline-flex";
+    if (hsaveBtn) hsaveBtn.style.display = "inline-flex";
+  } else {
+    el.innerHTML = `<button class="btn bo bsm" onclick="openAuth()">Sign In</button>`;
+    const b = document.getElementById("bsave");
+    if (b) b.style.display = "none";
+    if (hsaveBtn) hsaveBtn.style.display = "none";
+  }
 }
 window.updateNav = updateNav;
 
 // ── AUTH ──
 function openAuth() {
-    if (!fbOK) return toast('⚠️ Firebase config not set');
-    document.getElementById('amod').classList.add('show');
+  if (!fbOK) return toast("Firebase config not set");
+  document.getElementById("amod").classList.add("show");
 }
 function closeAuth() {
-    document.getElementById('amod').classList.remove('show');
+  document.getElementById("amod").classList.remove("show");
 }
 function atab(t) {
-    document.querySelectorAll('.tab').forEach((el, i) =>
-        el.classList.toggle('on', (i === 0 && t === 'l') || (i === 1 && t === 'r')));
-    document.getElementById('tl').style.display = t === 'l' ? '' : 'none';
-    document.getElementById('tr').style.display = t === 'r' ? '' : 'none';
+  document
+    .querySelectorAll(".tab")
+    .forEach((el, i) =>
+      el.classList.toggle(
+        "on",
+        (i === 0 && t === "l") || (i === 1 && t === "r"),
+      ),
+    );
+  document.getElementById("tl").style.display = t === "l" ? "" : "none";
+  document.getElementById("tr").style.display = t === "r" ? "" : "none";
 }
 async function doLogin() {
-    ld(true);
-    try {
-        await auth.signInWithEmailAndPassword(
-            document.getElementById('le').value,
-            document.getElementById('lp').value
-        );
-        closeAuth(); toast('✅ Signed in!');
-    } catch (e) { toast('❌ ' + e.message); }
-    ld(false);
+  ld(true);
+  try {
+    await auth.signInWithEmailAndPassword(
+      document.getElementById("le").value,
+      document.getElementById("lp").value,
+    );
+    closeAuth();
+    toast("Signed in successfully");
+  } catch (e) {
+    toast(e.message);
+  }
+  ld(false);
 }
 async function doReg() {
-    ld(true);
-    try {
-        const cred = await auth.createUserWithEmailAndPassword(
-            document.getElementById('re').value,
-            document.getElementById('rp').value
-        );
-        await cred.user.sendEmailVerification();  // ← bunu ekle
-        closeAuth(); toast('✅ Doğrulama emaili gönderildi!');
-    } catch (e) { toast('❌ ' + e.message); }
-    ld(false);
+  ld(true);
+  try {
+    const cred = await auth.createUserWithEmailAndPassword(
+      document.getElementById("re").value,
+      document.getElementById("rp").value,
+    );
+    await cred.user.sendEmailVerification(); // ← bunu ekle
+    closeAuth();
+    toast("Verification email sent");
+  } catch (e) {
+    toast(e.message);
+  }
+  ld(false);
 }
 async function doGoogle() {
-    ld(true);
-    try {
-        await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-        closeAuth(); toast('✅ Signed in with Google!');
-    } catch (e) { toast('❌ ' + e.message); }
-    ld(false);
+  ld(true);
+  try {
+    await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    closeAuth();
+    toast("Signed in with Google");
+  } catch (e) {
+    toast(e.message);
+  }
+  ld(false);
 }
 async function doLogout() {
-    if (!confirm("Are you sure you want to sign out?")) return;
-    await auth.signOut();
-    toast('👋 Signed out');
+  if (!confirm("Are you sure you want to sign out?")) return;
+  await auth.signOut();
+  toast("Signed out");
 }
 
 window.openAuth = openAuth;
@@ -152,10 +194,10 @@ window.doLogout = doLogout;
 
 // ── HOME ──
 function goJoin() {
-    const pin = document.getElementById('hpin').value.trim();
-    if (pin.length < 6) return toast('❌ Enter a 6-character PIN');
-    document.getElementById('ppin').value = pin;
-    showPage('page-play');
-    showPV('pv-j');
+  const pin = document.getElementById("hpin").value.trim();
+  if (pin.length < 6) return toast("Enter a 6-character PIN");
+  document.getElementById("ppin").value = pin;
+  showPage("page-play");
+  showPV("pv-j");
 }
 window.goJoin = goJoin;

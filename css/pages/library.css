@@ -27,195 +27,314 @@
    Uses adaptive CSS grid layouts.
    ═══════════════════════════════════════════════════════ */
 
-
 /* ======================================================
    LIBRARY PAGE WRAPPER
    ====================================================== */
 
 #page-library .wrap {
-    flex: 1;
+  flex: 1;
 
-    width: 100%;
-    max-width: 1100px;
+  width: 100%;
+  max-width: 1100px;
 
-    margin: 0 auto;
+  margin: 0 auto;
 
-    padding: 36px 20px;
+  padding: 36px 20px;
 }
-
 
 /* ======================================================
    LIBRARY GRID
    ====================================================== */
 
 .lib-grid {
-    display: grid;
+  display: grid;
 
-    grid-template-columns:
-        repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 
-    gap: 16px;
+  gap: 16px;
 
-    margin: 24px 0;
+  margin: 24px 0;
 }
-
 
 /* ======================================================
    LIBRARY CARD
    ====================================================== */
 
 .lib-card {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    gap: 12px;
+  gap: 12px;
 
-    padding: 16px;
+  padding: 16px;
 
-    background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.05);
 
-    border:
-        1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
-    border-radius: 12px;
+  border-radius: 12px;
 
-    transition:
-        transform .2s,
-        border-color .2s;
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
 }
 
 .lib-card:hover {
-    transform: translateY(-4px);
+  transform: translateY(-4px);
 
-    border-color: var(--al);
+  border-color: var(--al);
 }
-
 
 /* ======================================================
    LIBRARY CARD TITLE
    ====================================================== */
 
 .lib-card h3 {
-    margin: 0;
+  margin: 0;
 
-    font-size: 1.1rem;
-    font-weight: 800;
+  font-size: 1.1rem;
+  font-weight: 800;
 }
-
 
 /* ======================================================
    LIBRARY CARD DESCRIPTION
    ====================================================== */
 
 .lib-card p {
-    margin: 0;
+  margin: 0;
 
-    font-size: 0.9rem;
-    line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.5;
 
-    opacity: 0.7;
+  opacity: 0.7;
 }
-
 
 /* ======================================================
    CARD BUTTON ALIGNMENT
    ====================================================== */
 
 .lib-card .btn {
-    margin-top: auto;
+  margin-top: auto;
 }
-
 
 /* ======================================================
    EMPTY STATE
    ====================================================== */
 
 .empty-state {
-    padding: 40px;
+  padding: 40px;
 
-    text-align: center;
+  text-align: center;
 
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 
-    opacity: 0.6;
+  opacity: 0.6;
 }
-
 
 /* ======================================================
    LIBRARY CARD HEADER
    ====================================================== */
 
 .lc-head {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    gap: 8px;
+  gap: 12px;
 }
-
 
 /* ======================================================
    HEADER TITLE FIX
    ====================================================== */
 
 .lc-head h3 {
-    margin: 0;
+  flex: 1;
 
-    word-break: break-word;
+  margin: 0;
+
+  word-break: break-word;
+
+  font-size: 22px;
+  line-height: 1.2;
 }
-
 
 /* ======================================================
    ACTION BUTTON GROUP
    ====================================================== */
 
 .lc-acts {
-    display: flex;
+  display: flex;
+  align-items: center;
 
-    gap: 4px;
+  gap: 6px;
+
+  flex-shrink: 0;
 }
-
 
 /* ======================================================
    ICON BUTTON
    ====================================================== */
 
 .icon-btn {
-    padding: 4px;
+  width: 30px;
+  height: 30px;
 
-    background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    border: none;
-    border-radius: 4px;
+  padding: 0;
 
-    cursor: pointer;
+  background: transparent;
 
-    opacity: 0.6;
+  border: none;
+  border-radius: 8px;
 
-    font-size: 1rem;
+  cursor: pointer;
 
-    transition: all 0.2s;
+  opacity: 0.72;
+
+  font-size: 16px;
+
+  transition:
+    background 0.18s ease,
+    opacity 0.18s ease,
+    color 0.18s ease;
 }
 
 .icon-btn:hover {
-    opacity: 1;
+  opacity: 1;
 
-    background:
-        rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.06);
 }
 
+/* ======================================================
+   LIBRARY HEADER
+   ====================================================== */
+
+.lib-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin: 0 0 10px 0;
+
+  font-size: 42px;
+  font-weight: 900;
+
+  font-family: inherit;
+
+  letter-spacing: -1.5px;
+  line-height: 1;
+
+  color: var(--fg);
+}
+
+.library-header p {
+  margin-top: 8px;
+
+  color: var(--muted);
+
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.lib-title i {
+  font-size: 36px;
+
+  color: #c084fc;
+}
+
+/* ======================================================
+   EMPTY STATE
+   ====================================================== */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  min-height: 260px;
+
+  text-align: center;
+}
+
+.empty-icon {
+  width: 72px;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 24px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.18),
+    rgba(236, 72, 153, 0.1)
+  );
+
+  border: 1px solid rgba(192, 132, 252, 0.16);
+}
+
+.empty-icon i {
+  font-size: 34px;
+
+  color: #d8b4fe;
+}
+
+.empty-state h3 {
+  margin: 0;
+
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.empty-state p {
+  margin: 0;
+
+  max-width: 360px;
+
+  color: var(--muted);
+
+  line-height: 1.6;
+}
+
+/* ======================================================
+   LIBRARY ACTION BUTTONS
+   ====================================================== */
+
+.launch-lib-btn,
+.library-create-btn,
+.library-back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ======================================================
+   DELETE BUTTON
+   ====================================================== */
+
+.delete-btn:hover {
+  color: #fb7185;
+}
 
 /* ======================================================
    MOBILE RESPONSIVE
    ====================================================== */
 
 @media (max-width: 640px) {
+  #page-library .wrap {
+    padding: 28px 16px;
+  }
 
-    #page-library .wrap {
-        padding: 28px 16px;
-    }
-
-    .lib-grid {
-        grid-template-columns: 1fr;
-    }
+  .lib-grid {
+    grid-template-columns: 1fr;
+  }
 }

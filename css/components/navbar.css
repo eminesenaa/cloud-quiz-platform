@@ -25,68 +25,254 @@
    Safe for desktop/tablet/mobile screens.
    ═══════════════════════════════════════════════════════ */
 
-
 /* ======================================================
    GLOBAL NAVBAR
    ====================================================== */
 
 nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    padding: 14px 24px;
+  padding: 14px 24px;
 
-    background: var(--surf);
-    border-bottom: 1px solid var(--border);
+  background: var(--surf);
+  border-bottom: 1px solid var(--border);
 
-    position: sticky;
-    top: 0;
+  position: sticky;
+  top: 0;
 
-    z-index: 100;
+  z-index: 100;
 }
-
 
 /* ======================================================
    APP LOGO
    ====================================================== */
 
 .logo {
-    font-size: 22px;
-    font-weight: 900;
+  font-size: 22px;
+  font-weight: 900;
 
-    letter-spacing: -1px;
+  letter-spacing: -1px;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .logo span {
-    color: var(--al);
+  color: var(--al);
 }
-
 
 /* ======================================================
    NAVBAR RIGHT SECTION
    ====================================================== */
 
 .nav-r {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-
 
 /* ======================================================
    USER INFO PILL
    ====================================================== */
 
 .upill {
-    font-size: 13px;
+  font-size: 13px;
 
-    color: var(--muted);
-    background: var(--surf2);
+  color: var(--muted);
+  background: var(--surf2);
 
-    padding: 6px 14px;
+  padding: 6px 14px;
 
-    border-radius: 20px;
+  border-radius: 20px;
+}
+
+/* ======================================================
+   NAV ACTION BUTTON
+   ====================================================== */
+
+.nav-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  height: 42px;
+
+  padding: 0 16px;
+
+  border: 1px solid rgba(168, 85, 247, 0.14);
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.1),
+    rgba(236, 72, 153, 0.06)
+  );
+
+  color: #c084fc;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.nav-action-btn i {
+  font-size: 16px;
+}
+
+.nav-action-btn span {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.nav-action-btn:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(192, 132, 252, 0.45);
+
+  box-shadow: 0 10px 26px rgba(168, 85, 247, 0.16);
+}
+
+/* ======================================================
+   USER PILL
+   ====================================================== */
+
+.user-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ======================================================
+   USER AVATAR
+   ====================================================== */
+
+.user-avatar {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.22),
+    rgba(236, 72, 153, 0.16)
+  );
+
+  color: #d8b4fe;
+
+  font-size: 16px;
+}
+
+/* ======================================================
+   USER META
+   ====================================================== */
+
+.user-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  line-height: 1.1;
+}
+
+.user-label {
+  font-size: 10px;
+
+  color: var(--muted);
+
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.user-name {
+  font-size: 13px;
+  font-weight: 700;
+
+  color: var(--fg);
+}
+
+/* ======================================================
+   LOGOUT ICON BUTTON
+   ====================================================== */
+
+.logout-icon-btn {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  background: transparent;
+
+  color: var(--muted);
+
+  cursor: pointer;
+
+  border-radius: 12px;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.logout-icon-btn i {
+  font-size: 20px;
+}
+
+.logout-icon-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+
+  color: #f87171;
+
+  transform: translateY(-1px);
+}
+
+/* ======================================================
+   SIGN OUT BUTTON
+   ====================================================== */
+
+.signout-btn {
+  height: 42px;
+
+  padding-inline: 18px !important;
+
+  border-radius: 14px !important;
+}
+
+/* ======================================================
+   MOBILE NAVBAR
+   ====================================================== */
+
+@media (max-width: 720px) {
+  nav {
+    padding: 14px 16px;
+  }
+
+  .nav-r {
+    gap: 8px;
+  }
+
+  .user-label {
+    display: none;
+  }
+
+  .nav-action-btn span {
+    display: none;
+  }
+
+  .signout-btn {
+    padding-inline: 12px !important;
+  }
 }

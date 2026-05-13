@@ -6,7 +6,18 @@ function goCreate() {
   window.editingQuizId = null;
   window.quiz = { title: "", questions: [] };
   document.getElementById("qtitle").value = "";
+  document.getElementById("qtitle").addEventListener("input", markQuizAsDirty);
   document.getElementById("qcont").innerHTML = "";
+
+  window.editingFromLibrary = false;
+
+  const backBtn = document.getElementById("create-back-btn");
+  const backLabel = document.getElementById("create-back-label");
+
+  if (backBtn && backLabel) {
+    backBtn.onclick = () => showPage("page-home");
+    backLabel.textContent = "Back to Home";
+  }
 
   const bsave = document.getElementById("bsave");
   if (bsave) {
@@ -83,6 +94,12 @@ function addQ(initData) {
 </div>
     </div>`;
   c.appendChild(d);
+
+  d.querySelectorAll("input, select").forEach((el) => {
+    el.addEventListener("input", markQuizAsDirty);
+    el.addEventListener("change", markQuizAsDirty);
+  });
+
   renum();
 }
 
@@ -91,6 +108,7 @@ function delQ(btn) {
   if (c.children.length <= 1) return toast("At least 1 question required");
   btn.closest(".qcard").remove();
   renum();
+  markQuizAsDirty();
 }
 
 function renum() {
@@ -98,6 +116,19 @@ function renum() {
     c.querySelector(".qnum").textContent = `Q${i + 1}`;
     c.querySelectorAll(".orb").forEach((r) => (r.name = `cq${i}`));
   });
+}
+
+function markQuizAsDirty() {
+  const bsave = document.getElementById("bsave");
+
+  if (!bsave) return;
+
+  bsave.disabled = false;
+
+  bsave.innerHTML = `
+    <i class="ph ph-floppy-disk"></i>
+    Save Changes
+  `;
 }
 
 function collectQuiz() {
