@@ -10,21 +10,24 @@
    This file handles:
    - Hero section
    - Main landing content
-   - Home title/subtitle
-   - Join game section
-   - PIN input layout
-   - Responsive hero structure
+   - Hero typography
+   - Feature cards
+   - Glassmorphism badges
+   - Join section
+   - PIN input area
+   - Join button icon animations
+   - Responsive home layout
 
    IMPORTANT
    ---------
    - ONLY home-page-specific styles belong here.
-   - Reusable card/button styles should stay in components.
-   - Avoid shared/global styles.
+   - Shared button/card styles stay in components.
+   - Icons use Phosphor Icons system.
 
    RESPONSIVE
    ----------
    Fully responsive-safe.
-   Supports desktop/tablet/mobile layouts.
+   Optimized for desktop/tablet/mobile.
    ═══════════════════════════════════════════════════════ */
 
 
@@ -101,6 +104,131 @@
 
 
 /* ======================================================
+   HOME FEATURE CARD
+   ====================================================== */
+
+.hcard {
+    position: relative;
+
+    width: 230px;
+
+    padding: 32px 28px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    background: var(--surf);
+
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+
+    transition:
+        transform .2s,
+        border-color .2s,
+        box-shadow .2s;
+}
+
+.hcard:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(168, 85, 247, 0.45);
+
+    box-shadow:
+        0 14px 40px rgba(168, 85, 247, 0.10);
+}
+
+
+/* ======================================================
+   FEATURE CARD ICON
+   Phosphor Icons
+   ====================================================== */
+
+.hcard .ico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 74px;
+    height: 74px;
+
+    margin-bottom: 16px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(168, 85, 247, 0.18),
+            rgba(6, 182, 212, 0.10));
+
+    border: 1px solid rgba(168, 85, 247, 0.16);
+
+    font-size: 36px;
+
+    color: #c084fc;
+
+    box-shadow:
+        0 10px 30px rgba(168, 85, 247, 0.12);
+}
+
+
+/* ======================================================
+   FEATURE CARD TITLE
+   ====================================================== */
+
+.hcard h3 {
+    margin-bottom: 6px;
+
+    font-size: 18px;
+    font-weight: 800;
+}
+
+
+/* ======================================================
+   FEATURE CARD DESCRIPTION
+   ====================================================== */
+
+.hcard p {
+    font-size: 13px;
+    line-height: 1.5;
+
+    color: var(--muted);
+}
+
+
+/* ======================================================
+   GLASS BADGE
+   ====================================================== */
+
+.hcard .badge {
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+    padding: 4px 8px;
+
+    border-radius: 9px;
+
+    background: rgba(236, 72, 153, 0.14);
+
+    border: 1px solid rgba(236, 72, 153, 0.35);
+
+    backdrop-filter: blur(10px);
+
+    color: #f9a8d4;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: .5px;
+
+    box-shadow:
+        0 0 20px rgba(236, 72, 153, 0.12);
+}
+
+
+/* ======================================================
    JOIN GAME BOX
    ====================================================== */
 
@@ -116,9 +244,9 @@
 
     padding: 28px 32px;
 
-    background: var(--surf);
-
-    border: 1.5px solid var(--border);
+    background: transparent;
+    
+    border: none;
     border-radius: 20px;
 }
 
@@ -157,12 +285,33 @@
 
     padding: 14px !important;
 
+    text-align: center !important;
+
     font-size: 26px !important;
     font-weight: 900 !important;
 
-    text-align: center !important;
-
     letter-spacing: 8px !important;
+
+    background: rgba(255, 255, 255, 0.03) !important;
+    
+    border: 1px solid rgba(168, 85, 247, 0.16) !important;
+    
+    backdrop-filter: blur(10px);
+}
+
+
+/* ======================================================
+   JOIN BUTTON ICON
+   ====================================================== */
+
+.join-btn i {
+    font-size: 18px;
+
+    transition: transform .18s ease;
+}
+
+.join-btn:hover i {
+    transform: translateX(3px);
 }
 
 
@@ -187,5 +336,17 @@
     .pinbig {
         letter-spacing: 5px !important;
         font-size: 22px !important;
+    }
+
+    .hcard {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .hcard .ico {
+        width: 66px;
+        height: 66px;
+
+        font-size: 30px;
     }
 }
