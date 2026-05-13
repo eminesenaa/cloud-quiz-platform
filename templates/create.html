@@ -1,26 +1,87 @@
 <!-- templates/create.html -->
+
 <div class="page" id="page-create">
+
+    <!-- =========================================
+         MAIN CREATE WRAPPER
+         ========================================= -->
     <div class="wrap">
-        <div class="ph">
-            <h2>🎯 Create Quiz</h2>
-            <p>Add your questions → Launch → Share the PIN</p>
-        </div>
 
-        <div class="qmeta">
-            <div class="field" style="margin:0">
-                <label>Quiz Title</label>
-                <input type="text" id="qtitle" placeholder="e.g. General Knowledge Night 🎉">
+        <!-- =====================================
+             PAGE HEADER
+             ===================================== -->
+        <div class="create-header">
+
+            <div class="ph-icon">
+                <i class="ph ph-target"></i>
             </div>
+
+            <h2>Create Quiz</h2>
+
+            <p>
+                Build your quiz, launch the session,
+                and share the live game PIN instantly.
+            </p>
+
         </div>
 
+        <!-- =====================================
+             QUIZ META
+             ===================================== -->
+        <div class="qmeta">
+
+            <div class="field" style="margin:0">
+
+                <label>Quiz Title</label>
+
+                <input type="text" id="qtitle" placeholder="e.g. General Knowledge Night">
+
+            </div>
+
+        </div>
+
+        <!-- =====================================
+             QUESTION CONTAINER
+             Injected dynamically from create.js
+             ===================================== -->
         <div id="qcont"></div>
 
-        <button class="addq" onclick="addQ()">＋ Add Question</button>
+        <!-- =====================================
+             ADD QUESTION BUTTON
+             ===================================== -->
+        <button class="addq" onclick="addQ()">
+            <i class="ph ph-plus"></i>
+            Add Question
+        </button>
 
+        <!-- =====================================
+             ACTION BAR
+             ===================================== -->
         <div class="abar">
-            <button class="btn bo" onclick="showPage('page-home')">← Back</button>
-            <button class="btn bo" id="bsave" style="display:none" onclick="saveQuiz()">💾 Save</button>
-            <button class="btn bp blg" onclick="startGame()">🚀 Launch &amp; Get PIN</button>
+
+            <!-- Back Button -->
+            <button class="btn bo back-action-btn" onclick="showPage('page-home')">
+                <i class="ph-bold ph-arrow-left"></i>
+                Back to Home
+            </button>
+
+            <!-- Right Actions -->
+            <div class="aactions">
+
+                <!-- Save Quiz -->
+                <button class="btn bo save-btn" id="bsave" style="display:none" onclick="saveQuiz()">
+                    <i class="ph ph-floppy-disk"></i>
+                    Save Quiz
+                </button>
+
+                <!-- Launch Game -->
+                <button class="btn bp launch-btn" onclick="startGame()">
+                    Launch &amp; Get PIN
+                </button>
+
+            </div>
+
         </div>
+
     </div>
 </div>
